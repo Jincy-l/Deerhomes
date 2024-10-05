@@ -126,22 +126,15 @@ p {
   margin: 0 0 10px 0;
   padding: 0;
   color: #656b6f;
-  line-height: 21px;  
+  line-height: 21px;
   text-align: justify;
 }
 
 p.separator {
   line-height: 2px;
 }
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-
 /* /////////////////////////// */
-/* body {
+body {
   margin: 0;
   padding: 0;
 }
@@ -187,8 +180,8 @@ body {
   .floating-button img {
       width: 30px; 
   }
-} */
-
+}
+  
 /* ///////////////////////////////////// */
 
 input[type="number"],
