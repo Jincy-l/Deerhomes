@@ -434,26 +434,26 @@
 		},
 
 		isotopeInit: function () {
-			var sidebarWrapper = $('.sidebar .isotope'),
-				footerWrapper = $('.top-footer .isotope'),
-		    	isotopeContainer = $('.isot-projects-wrapper .isotope'),
-				defaultSelection = $('.isot-projects-wrapper').attr('data-default-selection');
+			// var sidebarWrapper = $('.sidebar .isotope'),
+			// 	footerWrapper = $('.top-footer .isotope'),
+		    // 	isotopeContainer = $('.isot-projects-wrapper .isotope'),
+			// 	defaultSelection = $('.isot-projects-wrapper').attr('data-default-selection');
 			
-			isotopeContainer.imagesLoaded(function () {
-				isotopeContainer.isotope({
-					filter: defaultSelection,
-					itemSelector: '.isotope-item',
-				    hiddenStyle: {
-				      opacity: 0,
-				      transform: 'scale(0.001)'
-				    },
-				    visibleStyle: {
-				      opacity: 1,
-				      transform: 'scale(1)'
-				    },
-				    transitionDuration: '0.8s'
-				});
-			});
+			// isotopeContainer.imagesLoaded(function () {
+			// 	isotopeContainer.isotope({
+			// 		filter: defaultSelection,
+			// 		itemSelector: '.isotope-item',
+			// 	    hiddenStyle: {
+			// 	      opacity: 0,
+			// 	      transform: 'scale(0.001)'
+			// 	    },
+			// 	    visibleStyle: {
+			// 	      opacity: 1,
+			// 	      transform: 'scale(1)'
+			// 	    },
+			// 	    transitionDuration: '0.8s'
+			// 	});
+			// });
 
 			// $('.isot-filters a').on('click', function () {
 			// 	$('.isot-filters .current').removeClass('current');
@@ -466,27 +466,27 @@
 			// 	return false;
 			// });
 
-			var isotopeGallery = $('.gallery-wrapper .isotope');
+			// var isotopeGallery = $('.gallery-wrapper .isotope');
 
-			isotopeGallery.imagesLoaded(function () {
-				isotopeGallery.isotope({
-					itemSelector: '.isotope-item'
-				});
-			});
+			// isotopeGallery.imagesLoaded(function () {
+			// 	isotopeGallery.isotope({
+			// 		itemSelector: '.isotope-item'
+			// 	});
+			// });
 
-			setTimeout(function () {
-				sidebarWrapper.imagesLoaded(function () {
-					sidebarWrapper.isotope({
-						itemSelector: '.isotope-item'
-					});
-				});
+			// setTimeout(function () {
+			// 	sidebarWrapper.imagesLoaded(function () {
+			// 		sidebarWrapper.isotope({
+			// 			itemSelector: '.isotope-item'
+			// 		});
+			// 	});
 
-				footerWrapper.imagesLoaded(function () {
-					footerWrapper.isotope({
-						itemSelector: '.isotope-item'
-					});
-				});
-			}, 2000);
+			// 	footerWrapper.imagesLoaded(function () {
+			// 		footerWrapper.isotope({
+			// 			itemSelector: '.isotope-item'
+			// 		});
+			// 	});
+			// }, 2000);
 		},
 
 		magnificInit: function () {
