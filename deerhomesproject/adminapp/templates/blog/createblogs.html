@@ -1,0 +1,128 @@
+
+{% extends 'mainlayout/index.html' %}
+{% block content %}
+
+        <!-- content body -->
+        <div class="content-body">
+            <div class="container">
+                <div class="row page-titles">
+                    <div class="col p-0">
+                        <h4>Hello, <span>Welcome here</span></h4>
+                    </div>
+                    <div class="col p-0">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">From</a>
+                            </li>
+                            <li class="breadcrumb-item active">Createblogs</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Blogs</h4>
+                                <div class="basic-form">
+                                     {% if edit %} 
+                                     {% if blog %} 
+                                    <form action="{% url 'blogEdit' blog.id %}" method="POST"  enctype="multipart/form-data"> 
+                                    {% else %}                                     
+                                    <form action="{% url 'createBlogs' %}" method="POST"  enctype="multipart/form-data">
+                                     {% endif %} 
+                                    {% endif %} 
+                                        {% csrf_token %}
+                                     
+                                        <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control"name="name" placeholder="Blog name" value="{{ blog.name }}" {% if view %} readonly {% endif %} >
+                                        </div>
+                                      
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <input type="text"  name="description"class="form-control" placeholder="Description" value="{{ blog.description}}" {% if view %} readonly {% endif %}>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Metatag</label>
+                                            <textarea class="form-control" name="metatag" placeholder="Metatag" {% if view %} readonly {% endif %}>{{ blog.metatag }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Metakeyword</label>
+                                            <input type="text" name="metakeyword" class="form-control" placeholder="Metakeyword" value="{{ blog.metakeyword }}" {% if view %} readonly {% endif %}>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>MetaDescription</label>
+                                            <input type="text" name="metaDescription" class="form-control" placeholder="MetaDescription" value="{{ blog.metadescription }}" {% if view %} readonly {% endif %}>
+                                        </div> 
+                                        
+                                        <div class="form-group-append">
+                                        <div class="form-group-append-sub">
+                                        <div class="form-group">
+                                            <label>Subtitle Name</label>
+                                            <input type="text" id="subtitleName" name="subtitlename[]" class="form-control" placeholder="MetaDescription" value="{{ blog.metadescription }}" {% if view %} readonly {% endif %}>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Subtitle Content</label>
+                                            <input type="text" id="subtitleContent" name="subtitlecontent[]" class="form-control" placeholder="MetaDescription" value="{{ blog.metadescription }}" {% if view %} readonly {% endif %}>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        <button type="button" id="appendButton" class="btn btn-primary">
+                                            <i class="fas fa-plus"></i> 
+                                        </button>
+                                        
+                                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                        <script>
+                                            // Append new fields
+                                            document.getElementById("appendButton").addEventListener("click", function() {
+                                                const html = `
+                                                    <div class="form-group-append-sub">
+                                                        <div class="form-group">
+                                                            <label>Subtitle Name 
+                                                                 <button type="button" class="btn btn-danger removeButton">
+                                                                  <i class="fas fa-trash-alt"></i> 
+                                                                 </button>
+                                                            </label>
+                                                            <input type="text" name="subtitlename[]" class="form-control" placeholder="MetaDescription" value="">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Subtitle Content</label>
+                                                            <input type="text" name="subtitlecontent[]" class="form-control" placeholder="MetaDescription" value="">
+                                                        </div>
+                                                    </div>`;
+                                                $('.form-group-append').append(html);
+                                            });
+
+                                            // Use event delegation for dynamically added remove buttons
+                                            $(document).on("click", ".removeButton", function() {
+                                                $(this).closest(".form-group-append-sub").remove();
+                                            });
+                                        </script>
+                                   
+                                        {% if blog.blog_image %} 
+                                        <img src="/media/blogimages/{{ blog.blog_image }}" alt="Blog Image" height="100px" width="100px">
+                                         {% endif %} 
+
+                                         {% if edit %} 
+
+                                         <div class="form-group">
+                                           <label>Upload  Image</label>
+                                           <input type="file" class="form-control"name="blog_image" placeholder="image" value="{{ blog.blog_image}}" {% if view %} readonly {% endif %} >
+                                         </div>
+                                        <button type="submit" class="btn btn-dark">Submit</button>
+                                         {% endif %} 
+                                    
+                                         {% if edit %} 
+                                          </form>
+                                         {% endif %} 
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
