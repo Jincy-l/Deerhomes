@@ -7,13 +7,13 @@
             <div class="container">
                 <div class="row page-titles">
                     <div class="col p-0">
-                        <h4>Hello, <span>Welcome here</span></h4>
+                        {% comment %} <h4>Hello, <span>Welcome here</span></h4> {% endcomment %}
                     </div>
                     <div class="col p-0">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">home</a>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item active">Projectlist</li>
+                            <li class="breadcrumb-item active">Project List</li>
                         </ol>
                     </div>
                 </div>
@@ -33,6 +33,7 @@
                                                 <th>Amount</th>
                                                 <th>Description</th>
                                                 <th>Location</th>
+                                                <th>Image</th>
                                                 <th>Action</th>
 
                                               
@@ -40,13 +41,14 @@
                                         </thead>
                                         <tbody>
                                             {% for project in projects %}
-                                            <tr>
+                                                <tr>
                                                 <td>{{ forloop.counter }}</td> 
                                                 <td>{{project.name}}</td>
                                                 <td>{{project.address}}</td>
                                                 <td>{{project.amount}}</td>
                                                 <td>{{project.description|truncatewords:5}}</td>
                                                 <td>{{project.location}}</td>
+                                                <td><img src="/media/projectimages/{{project.image}}" style="width:130px"></td>
                                                 <td>
                                                     <a href="{% url 'projectview' id=project.id %}">
                                                         <button class="btn btn-info btn-sm">
@@ -70,12 +72,6 @@
                                                 
                                             </tr>
                                              {% endfor %}
-                                            
-                                           
-                                            
-                                          
-                                            
-                                           
                                         </tbody>
                                         
                                     </table>

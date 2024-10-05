@@ -1,0 +1,195 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>DeerHomes</title>
+    <!-- /SEO Ultimate -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static  'userassets/images/favicon/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static  'userassets/images/favicon//apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static  'userassets/images/favicon//apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static  'userassets/images/favicon//apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static  'userassets/images/favicon//apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static  'userassets/images/favicon//apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static  'userassets/images/favicon//apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static  'userassets/images/favicon//apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static  'userassets/images/favicon//apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static  'userassets/images/favicon//android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static  'userassets/images/favicon//favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static  'userassets/images/favicon//favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static  'userassets/images/favicon//favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static  'userassets/images/favicon//manifest.json' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Latest compiled and minified CSS -->
+    <link href="{% static  'userassets/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static  'userassets/js/bootstrap.min.js' %}">
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- StyleSheet link CSS -->
+    <link href="{% static  'userassets/css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static  'userassets/css/custom-style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static  'userassets/css/special-classes.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static  'userassets/css/responsive.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static  'userassets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static  'userassets/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    
+</head>
+<body>
+<!-- Header  -->
+<div class="banner_outer">
+    <figure class="banner-background mb-0">
+        <img src="{% static  'userassets/images/banner-background.jpg' %}" alt="" class="img-fluid">
+    </figure>
+    <header class="header">
+        <div class="main-header">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="{% url 'mainindex' %}"><figure class="mb-0 banner-logo"><img src="{% static  'userassets/images/deerhomes-logo.png' %}" alt="" class="img-fluid"></figure></a>
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+
+
+                           
+
+                            <li class="nav-item  {% if request.path == '/' %} active {% endif %}">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item {% if request.path == '/about' %} active {% endif %}">
+                                <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                            </li>
+                            <li class="nav-item {% if request.path == '/service' %} active {% endif %}">
+                                <a class="nav-link" href="{% url 'service' %}">Services</a>
+                            </li>
+                            <li class="nav-item {% if request.path == '/project' %} active {% endif %}">
+                                <a class="nav-link" href="{% url 'project' %}">Projects</a>
+                            </li>
+                            <li class="nav-item {% if request.path == '/blog' %} active {% endif %}">
+                                <a class="nav-link" href="{% url 'blog' %}">Blogs</a>
+                            </li>                            
+                           
+                            <li class="nav-item {% if request.path == '/contact' %} active {% endif %}">
+                                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link get_a_quote" href="about">Get a Quote
+                                    <i class="dot fa-regular fa-circle-small"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="social-icons position-relative">
+        <ul class="list-unstyled mb-0 position-absolute">
+            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-twitter social-networks"></i></a></li>
+            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-facebook-f social-networks"></i></a></li>
+            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-instagram social-networks"></i></a></li>
+            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-linkedin-in social-networks"></i></a></li>
+        </ul>
+    </div>
+
+    {% block headingblock %}
+
+    {% endblock %}
+    {% comment %} <section class="banner-section">
+        <figure class="banner-backgroundimage mb-0">
+            <img src="{% static  'userassets/images/banner-backgroundimage.jpg' %}" alt="" class="img-fluid">
+        </figure>
+        <div class="container-fluid">
+           
+                {% block headingblock %}
+
+                {% endblock %}
+    </section> {% endcomment %}
+</div>
+{% block user %}
+
+{% endblock %}
+
+<!-- Footer -->
+<section class="footer-section">
+    <figure class="left-lamp mb-0">
+        <img src="{% static  'userassets/images/left-lamp.png' %}" alt="" class="img-fluid">
+    </figure>
+    <figure class="right-lamp mb-0">
+        <img src="{% static  'userassets/images/right-lamp.png' %}" alt="" class="img-fluid">
+    </figure>
+    <div class="container">
+        <div class="middle-portion">
+            <div class="row">
+                <div class="col-12">
+                    <div class="logo-part">
+                        <a href="{% url 'mainindex' %}"><figure class="footer-logo"><img src="{% static  'userassets/images/footer-logo.png' %}" alt=""></figure></a>
+                        <h6>Sign-up to get the latest offers and news and stay updated.</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <form action="mainindex"method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-12 d-sm-block d-none">
+                                <input type="email" name="email" id="emailadd" class="form-control upper_layer" placeholder="Your Email Address">
+                                <div class="input-group-append form-button">
+                                    
+                                    <button class="btn subscribe_now" name="btnsubmit" id="submitbtn" type="submit">Subscribe
+                                        <i class="dot fa-solid fa-circle-small"></i>
+                                    </button>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+        <div class="footer-lower">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-md-block d-none">
+                    <div class="social-icons position-relative">
+                        <ul class="list-unstyled mb-0 position-absolute">
+                            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-twitter social-networks"></i></a></li>
+                            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-facebook-f social-networks"></i></a></li>
+                            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-instagram social-networks"></i></a></li>
+                            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-linkedin-in social-networks"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <p class="mb-0 text-size-14">©2024 DeerHomes, All Rights Reserved. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Latest compiled JavaScript -->
+<script src="{% static  'userassets/js/jquery-3.6.0.min.js' %}"> </script>
+<script src="{% static  'userassets/js/bootstrap.min.js' %}"> </script>
+<script src="{% static  'userassets/js/video_link.js' %}"></script>
+<script src="{% static  'userassets/js/video.js' %}"></script>
+<script src="{% static  'userassets/js/counter.js' %}"></script>
+<script src="{% static  'userassets/js/owl.carousel.js' %}"></script>
+<script src="{% static  'userassets/js/custom-carousel.js' %}"></script>
+<script src="{% static  'userassets/js/custom.js' %}"></script>
+<script src="{% static  'userassets/js/animation_links.js' %}"></script>
+<script src="{% static  'userassets/js/animation.js' %}"></script>
+</body>
+</html>

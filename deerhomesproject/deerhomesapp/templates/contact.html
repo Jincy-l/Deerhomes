@@ -1,131 +1,137 @@
 {% extends 'layout/userindex.html' %}
+
 {% load static %}
 {% block headingblock %}
 
-<section class="sub-banner_section">
-    <figure class="banner-backgroundimage mb-0">
-        <img src="{%static 'userassets/images/project-backgroundimage.jpg' %}" alt="" class="img-fluid">
-    </figure>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-12">
-            <div class="banner_content" data-aos="fade-up">
-                <h1>Contact Us</h1>
-                <p class="text-size-14 text-white mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                    dolore eu fugiat nulla pariat cepteur sint o ccaecat cupidatat.
-                </p>
+<section class="hero-section">
+    <h2 class="hidden">Slider Section</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="rev_slider_wrapper">
+                    <div class="fullwidth_slider rev_slider" data-arrows="false" data-height="750">
+                        <ul>		
+                            <li data-transition="fade">			
+
+                                <img src="{% static 'userassets/img/cover-1.png' %}" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+
+                                <div class="tp-caption WhiteTtl tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="-32" 
+                                    data-whitespace="nowrap"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-150px;opacity:0;s:1000;e:Power4.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1300"
+                                    data-responsive_offset="on"> Deer Homes 
+                                </div>
+                                
+                                <div class="tp-caption WhiteTtlp tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="32" 
+                                    data-whitespace="pre"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-100px;opacity:0;s:1000;e:Power2.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1700" 
+                                    data-responsive_offset="on"> Interior Designer & Architecture Firm
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-xl-7 col-lg-6 col-md-4 col-sm-12 col-12 d-lg-block d-none">
-        </div>
     </div>
-</div>
 </section>
+
 {% endblock %}
 {% block user %}
 
-<!-- Contact info -->
-<section class="contactinfo-section position-relative">
-    <div class="container-fluid p-0">
-<!-- Contact map -->
-        <div class="contact_map_section position-relative">
-            <div class="row">
-                <div class="col-12">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.8065263161384!2d76.60380599999999!3d8.897572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05fcfc527874c3%3A0xc1b1943ead77e327!2sDeerhomes%20-%20Architects%20and%20Interior%20Designers!5e0!3m2!1sen!2sin!4v1727783760600!5m2!1sen!2sin" width="1920" height="556" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
-        <div class="info_content">
-            <div class="row">
-                <div class="col-lg-7 col-md-8 col-sm-12 col-12 order-md-1 order-2">
-                    <div class="badge c-black" id="badge2">
-                        <span class="badge__char"> </span>
-                        <span class="badge__char">D</span>
-                        <span class="badge__char">E</span>
-                        <span class="badge__char">E</span>
-                        <span class="badge__char">R</span>
-                        <span class="badge__char"></span>
-                        <span class="badge__char">H</span>
-                        <span class="badge__char">O </span>
-                        <span class="badge__char">M</span>
-                        <span class="badge__char">E</span>
-                        <span class="badge__char">S</span>
-                    
-                    </div>
-                    <figure class="contactpage-rightborder mb-0">
-                        <img src="static/assets/images/servicepage-imagerightborder.png" alt="" class="img-fluid">
-                    </figure>
-                    <div class="content-box">
-                        <form id="contactpage" method="POST" action="{% url 'contact'  %}">
-                            {% csrf_token %}
-                            <div class="form-group"> 
-                                <input type="text" class="form_style" placeholder="Name:" name="name"> 
-                            </div>
-                            <div class="form-group mr-0">
-                                <input type="email" class="form_style" placeholder="E-mail:" name="email">
-                            </div>
-                            <div class="form-group form3">
-                                <input type="tel" class="form_style" placeholder="Phone:" name="phone">
-                            </div>
-                            <div class="form-group mr-0 message">
-                                <textarea class="form_style" placeholder="Message:" rows="3" name="message"></textarea>
-                            </div>
-                            <div class="button">
-                                <button type="submit" class="submit">Submit
-                                    <i class="dot fa-solid fa-circle-small"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-4 col-sm-12 col-12 order-md-2 order-1">
-                    <div class="contactpage_content" data-aos="fade-left">
-                        <h2>Get In Touch</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Contact -->
-<section class="contactpage-section">
+<section class="contact-section v2">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <div class="box box1">
-                    <div class="icon">
-                        <figure class="mb-0 contact-addressicon">
-                            <img src="{% static 'userassets/images/contact-addressicon.png' %}" alt="" class="img-fluid">
-                        </figure>
-                    </div>
-                    <h5>Address</h5>
-                    <p class="mb-0 text-size-16">Uliyakovil East, Kollam</p>
-                    <p class="mb-0 text-size-16"> Kerala, 691008</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <div class="box">
-                    <div class="icon">
-                        <figure class="mb-0 contact-phoneicon">
-                            <img src="{% static 'userassets/images/contact-phoneicon.png' %}" alt="" class="img-fluid">
-                        </figure>
-                    </div>
-                    <h5>Phone</h5>
-                    <a href="tel:+9496269082" class="mb-0 text-decoration-none text-size-16">(+91) 94962 69082</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <div class="box">
-                    <div class="icon">
-                        <figure class="mb-0 contact-emailicon">
-                            <img src="{% static 'userassets/images/contact-emailicon.png' %}" alt="" class="img-fluid">
-                        </figure>
-                    </div>
-                    <h5>Email</h5>
-                    <a href="mailto:deerhomes@gmail.com" class="mb-0 text-decoration-none text-size-16">deerhomes@gmail.com</a>
-                </div>
-            </div>
+        <div class="section-header">
+            <h6>Get in touch with us</h6>
         </div>
+        <div class="row">
+            <div class="col-md-9 col-content contact_form">
+                <div id="note"></div>
+                <div id="fields">
+                    <form class="respond-form" id="contactpage" method="POST" action="{% url 'contact'  %}">
+                        {% csrf_token %}
+                        <div class="input-line">
+                            <input type="text" name="name" class="check-value" required> 
+                            <span>Name</span>
+                        </div>
+
+                        <div class="input-line">
+                            <input type="text" name="email" class="check-value" required>
+                            <span>Email</span>
+                        </div>
+                        <div class="input-line">
+                            <input type="text" name="phone" class="check-value" required>
+                            <span>Phone</span>
+                        </div>
+                        <div class="input-line textarea">
+                            <textarea class="check-value" name="message" placeholder="" required></textarea>
+                            <span>Message</span>
+                        </div>
+                        <input class="form-send btn yellow dark-hover" type="submit" value="submit">
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sidebar">
+                <div class="sidebar">
+                    <div class="row isotope">
+                        <div class="col-md-12 col-sm-6 col-xs-12 isotope-item">
+                            <div class="widget widget_contact">
+                                <h4 class="widget-title">Contact Info</h4>
+                                <div class="widget-body">
+                                    <ul class="contact-info clean-list">
+                                        <li>
+                                            <span class="title">Address:</span>
+                                            <a href="https://maps.app.goo.gl/mriC6uPrRSJu5Z9f7" target="_blank">                            
+                                                <p>Uliyakovil East, Kollam,</p>
+                                                <p>Kerala 691008</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <span class="title">Phone:</span>
+                                            <p><a href="tel:+919496269082" target="_blank">+91 94962 69082</a></p>
+
+                                        </li>
+                                        <li>
+                                            <span class="title">Email:</span>
+                                            <p><a href="mailto:deerhomes@gmail.com">deerhomes@gmail.com</a></p>
+
+                                        </li>
+                                        <li>
+                                            <span class="title">Follow Us:</span>
+                                            <ul class="socials clean-list">            
+                                                <li><a href="https://wa.me/+919496269082?text=Hi"  target="_blank"><i class="fa fa-whatsapp"></i></a></li>                        
+                                                <li><a href="https://www.facebook.com/deerhomes"  target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                                                <li><a href="https://www.linkedin.com/company/deer-homes-kollam"  target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+                                                <li><a href="https://www.instagram.com/deerhomeskollam"  target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>	
     </div>
 </section>
+
+<div id="mapp"></div>
+
+<div id="mapp">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.8064693294987!2d76.60123107406558!3d8.897577291034256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05fcfc527874c3%3A0xc1b1943ead77e327!2sDeerhomes%20-%20Architects%20and%20Interior%20Designers!5e0!3m2!1sen!2sin!4v1727935867687!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+</div>
+
 {% endblock %}
+

@@ -8,10 +8,54 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Deerhomes</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'adminassets/images/deerhomes-logo.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'adminassets/images/favicon.png' %}">
     <!-- Custom Stylesheet -->
     <link href="{% static 'adminassets/css/style.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Import Google Font -->
     <script src="{% static 'adminassets/js/modernizr-3.6.0.min.js' %}"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Change font family here */
+        }
+        .login-bg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .card {
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        .form-control {
+            border-radius: 5px; /* Rounded input fields */
+            border: 1px solid #ced4da; /* Border color */
+            padding: 10px; /* Padding for input fields */
+        }
+        .form-control:focus {
+            border-color: #007bff; /* Border color on focus */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus shadow */
+        }
+        .btn-primary {
+            background-color: #007bff; /* Button color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded button */
+            padding: 10px 20px; /* Button padding */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker color on hover */
+        }
+        .text-center h3 {
+            margin-bottom: 20px; /* Spacing below the heading */
+        }
+        .form-group label {
+            margin-bottom: 5px; /* Spacing for labels */
+        }
+        .form-row {
+            margin-bottom: 15px; /* Spacing between form rows */
+        }
+    </style>
 </head>
 
 <body class="h-100">
@@ -28,43 +72,32 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="logo text-center">
-                                
-                                     <a href="index.html">
-                                        <img src="{% static 'adminassets/images/deerhomes-logo.png' %}" alt="" height="100px" width="100px">
-                                    </a> 
+                                    <!--<a href="index.html">-->
+                                    <!--    <img src="{% static 'adminassets/images/f-logo.png' %}" alt="">-->
+                                    <!--</a>-->
                                 </div>
-                                <h4 class="text-center m-t-15">Log into Your Account</h4>
+                                <h3 class="text-center m-t-15">Log into Your Account</h3>
                                  <form action="{% url 'loginpage' %}" method="POST">
                                     {% csrf_token %}
                                       <!-- Title -->
-                                       
                                       {% if message %}
                                       <ul>
-                                          
-                                              <li>{{ message }}</li>
-                                          
+                                          <li>{{ message }}</li>
                                       </ul>
                                   {% endif %}
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                        <input type="email" name="email" class="form-control" placeholder="Email" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password"  name="password"class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="form-row">
-                                       
-                                       
-                                        </div>
+                                        <input type="password"  name="password" class="form-control" placeholder="Password" required>
                                     </div>
                                     <div class="text-center m-b-15 m-t-15">
-                                        
                                         <button type="submit" class="btn btn-primary">Sign in</button>
-                                        
                                     </div>
                                 </form>
-                             
+                                
                             </div>
                         </div>
                     </div>
@@ -76,7 +109,7 @@
     <!-- Common JS -->
     <script src="{% static 'adminassets/plugins/common/common.min.js' %}"></script>
     <!-- Custom script -->
-    <script src="{% static 'adminassets/js/custom-mini-nav.js' %}"></script>
+    <script src="{% static 'adminassets/js/custom_mini-nav.js' %}"></script>
 </body>
 
 </html>

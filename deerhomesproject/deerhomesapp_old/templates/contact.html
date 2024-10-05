@@ -1,0 +1,131 @@
+{% extends 'layout/userindex.html' %}
+{% load static %}
+{% block headingblock %}
+
+<section class="sub-banner_section">
+    <figure class="banner-backgroundimage mb-0">
+        <img src="{%static 'userassets/images/project-backgroundimage.jpg' %}" alt="" class="img-fluid">
+    </figure>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-12">
+            <div class="banner_content" data-aos="fade-up">
+                <h1>Contact Us</h1>
+                <p class="text-size-14 text-white mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                    dolore eu fugiat nulla pariat cepteur sint o ccaecat cupidatat.
+                </p>
+            </div>
+        </div>
+        <div class="col-xl-7 col-lg-6 col-md-4 col-sm-12 col-12 d-lg-block d-none">
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}
+{% block user %}
+
+<!-- Contact info -->
+<section class="contactinfo-section position-relative">
+    <div class="container-fluid p-0">
+<!-- Contact map -->
+        <div class="contact_map_section position-relative">
+            <div class="row">
+                <div class="col-12">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.8065263161384!2d76.60380599999999!3d8.897572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05fcfc527874c3%3A0xc1b1943ead77e327!2sDeerhomes%20-%20Architects%20and%20Interior%20Designers!5e0!3m2!1sen!2sin!4v1727783760600!5m2!1sen!2sin" width="1920" height="556" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="info_content">
+            <div class="row">
+                <div class="col-lg-7 col-md-8 col-sm-12 col-12 order-md-1 order-2">
+                    <div class="badge c-black" id="badge2">
+                        <span class="badge__char"> </span>
+                        <span class="badge__char">D</span>
+                        <span class="badge__char">E</span>
+                        <span class="badge__char">E</span>
+                        <span class="badge__char">R</span>
+                        <span class="badge__char"></span>
+                        <span class="badge__char">H</span>
+                        <span class="badge__char">O </span>
+                        <span class="badge__char">M</span>
+                        <span class="badge__char">E</span>
+                        <span class="badge__char">S</span>
+                    
+                    </div>
+                    <figure class="contactpage-rightborder mb-0">
+                        <img src="static/assets/images/servicepage-imagerightborder.png" alt="" class="img-fluid">
+                    </figure>
+                    <div class="content-box">
+                        <form id="contactpage" method="POST" action="{% url 'contact'  %}">
+                            {% csrf_token %}
+                            <div class="form-group"> 
+                                <input type="text" class="form_style" placeholder="Name:" name="name"> 
+                            </div>
+                            <div class="form-group mr-0">
+                                <input type="email" class="form_style" placeholder="E-mail:" name="email">
+                            </div>
+                            <div class="form-group form3">
+                                <input type="tel" class="form_style" placeholder="Phone:" name="phone">
+                            </div>
+                            <div class="form-group mr-0 message">
+                                <textarea class="form_style" placeholder="Message:" rows="3" name="message"></textarea>
+                            </div>
+                            <div class="button">
+                                <button type="submit" class="submit">Submit
+                                    <i class="dot fa-solid fa-circle-small"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-4 col-sm-12 col-12 order-md-2 order-1">
+                    <div class="contactpage_content" data-aos="fade-left">
+                        <h2>Get In Touch</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact -->
+<section class="contactpage-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                <div class="box box1">
+                    <div class="icon">
+                        <figure class="mb-0 contact-addressicon">
+                            <img src="{% static 'userassets/images/contact-addressicon.png' %}" alt="" class="img-fluid">
+                        </figure>
+                    </div>
+                    <h5>Address</h5>
+                    <p class="mb-0 text-size-16">Uliyakovil East, Kollam</p>
+                    <p class="mb-0 text-size-16"> Kerala, 691008</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                <div class="box">
+                    <div class="icon">
+                        <figure class="mb-0 contact-phoneicon">
+                            <img src="{% static 'userassets/images/contact-phoneicon.png' %}" alt="" class="img-fluid">
+                        </figure>
+                    </div>
+                    <h5>Phone</h5>
+                    <a href="tel:+9496269082" class="mb-0 text-decoration-none text-size-16">(+91) 94962 69082</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                <div class="box">
+                    <div class="icon">
+                        <figure class="mb-0 contact-emailicon">
+                            <img src="{% static 'userassets/images/contact-emailicon.png' %}" alt="" class="img-fluid">
+                        </figure>
+                    </div>
+                    <h5>Email</h5>
+                    <a href="mailto:deerhomes@gmail.com" class="mb-0 text-decoration-none text-size-16">deerhomes@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

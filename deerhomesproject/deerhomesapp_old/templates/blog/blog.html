@@ -1,0 +1,75 @@
+
+{% extends 'layout/userindex.html' %}
+{% load static %}
+{% block headingblock %}
+
+<section class="sub-banner_section">
+    <figure class="banner-backgroundimage mb-0">
+        <img src="{%static 'userassets/images/project-backgroundimage.jpg' %}" alt="" class="img-fluid">
+    </figure>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-12">
+            <div class="banner_content" data-aos="fade-up">
+                <h1>Blogs</h1>
+                <p class="text-size-14 text-white mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                    dolore eu fugiat nulla pariat cepteur sint o ccaecat cupidatat.
+                </p>
+            </div>
+        </div>
+        <div class="col-xl-7 col-lg-6 col-md-4 col-sm-12 col-12 d-lg-block d-none">
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}
+{% block user %}
+
+<!-- Blog -->
+
+    
+<section class="blog-section">
+    <figure class="about-backgroundimage mb-0">
+        <img src="static/assets/images/about-backgroundimage.png" alt="" class="img-fluid">
+    </figure>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Latest Blogs </h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for blog in blogs %}
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                <div class="box">
+                    
+                    <span class="number">{{blog.name}}</span>
+                    
+                    {% comment %} <p class="text text-size-14">{{blog.description[0:100]}}</p> {% endcomment %}
+                    <p>{{ blog.description|slice:":100" }}{% if blog.description|length > 100 %}...{% endif %}</p>
+
+                    <a class="read_more text-decoration-none" href="{% url 'blog_detail' blog.id %}">Read More
+                        <i class="dot fa-solid fa-circle-small"></i>
+                    </a>
+
+                    <div class="image">          
+                        <figure class="blog-image mb-0">
+                            <img src="static/userassets/images/blog-image1.jpg" alt="" class="img-fluid">
+                        </figure>
+
+                    </div>
+                </div>
+             
+            </div>
+            {% endfor %}
+            
+           
+         
+            
+            
+            
+           
+        </div>
+    </div>
+</section>
+{% endblock %}

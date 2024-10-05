@@ -8,13 +8,12 @@
             <div class="container">
                 <div class="row page-titles">
                     <div class="col p-0">
-                        <h4>Hello, <span>Welcome here</span></h4>
                     </div>
                     <div class="col p-0">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">home</a>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item active">Blog</li>
+                            <li class="breadcrumb-item active">Blog List</li>
                         </ol>
                     </div>
                 </div>
@@ -35,6 +34,7 @@
                                                 <th>Metatag</th>
                                                 <th>Metakeyword</th>
                                                 <th>Metadescription</th>
+                                                <th>Image</th>
                                                 
                                                 <th>Action</th>
 
@@ -50,6 +50,7 @@
                                                 <td>{{blog.metatag}}</td>
                                                 <td>{{blog.metakeyword}}</td>
                                                 <td>{{blog.metadescription}}</td>
+                                                <td><img src="/media/blogimages/{{blog.blog_image}}" style="width:130px"></td>
                                                 <td>
                                                     <a href="{% url 'blogView' id=blog.id %}">
                                                         <button class="btn btn-info btn-sm">

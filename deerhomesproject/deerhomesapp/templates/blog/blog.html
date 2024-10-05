@@ -1,75 +1,136 @@
-
 {% extends 'layout/userindex.html' %}
+
 {% load static %}
 {% block headingblock %}
 
-<section class="sub-banner_section">
-    <figure class="banner-backgroundimage mb-0">
-        <img src="{%static 'userassets/images/project-backgroundimage.jpg' %}" alt="" class="img-fluid">
-    </figure>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-12">
-            <div class="banner_content" data-aos="fade-up">
-                <h1>Blogs</h1>
-                <p class="text-size-14 text-white mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                    dolore eu fugiat nulla pariat cepteur sint o ccaecat cupidatat.
-                </p>
-            </div>
-        </div>
-        <div class="col-xl-7 col-lg-6 col-md-4 col-sm-12 col-12 d-lg-block d-none">
-        </div>
-    </div>
-</div>
-</section>
-{% endblock %}
-{% block user %}
-
-<!-- Blog -->
-
-    
-<section class="blog-section">
-    <figure class="about-backgroundimage mb-0">
-        <img src="static/assets/images/about-backgroundimage.png" alt="" class="img-fluid">
-    </figure>
+<section class="hero-section">
+    <h2 class="hidden">Slider Section</h2>
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h2>Latest Blogs </h2>
-            </div>
-        </div>
-        <div class="row">
-            {% for blog in blogs %}
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                <div class="box">
-                    
-                    <span class="number">{{blog.name}}</span>
-                    
-                    {% comment %} <p class="text text-size-14">{{blog.description[0:100]}}</p> {% endcomment %}
-                    <p>{{ blog.description|slice:":100" }}{% if blog.description|length > 100 %}...{% endif %}</p>
+            <div class="col-sm-12">
+                <div class="rev_slider_wrapper">
+                    <div class="fullwidth_slider rev_slider" data-arrows="false" data-height="750">
+                        <ul>		
+                            <li data-transition="fade">			
 
-                    <a class="read_more text-decoration-none" href="{% url 'blog_detail' blog.id %}">Read More
-                        <i class="dot fa-solid fa-circle-small"></i>
-                    </a>
+                                <img src="{% static 'userassets/img/cover-1.png' %}" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
 
-                    <div class="image">          
-                        <figure class="blog-image mb-0">
-                            <img src="static/userassets/images/blog-image1.jpg" alt="" class="img-fluid">
-                        </figure>
-
+                                <div class="tp-caption WhiteTtl tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="-32" 
+                                    data-whitespace="nowrap"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-150px;opacity:0;s:1000;e:Power4.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1300"
+                                    data-responsive_offset="on"> Deer Homes
+                                </div>
+                                
+                                <div class="tp-caption WhiteTtlp tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="32" 
+                                    data-whitespace="pre"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-100px;opacity:0;s:1000;e:Power2.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1700" 
+                                    data-responsive_offset="on">DeerHomes Interior Designer & Architecture Firm
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-             
             </div>
-            {% endfor %}
-            
-           
-         
-            
-            
-            
-           
         </div>
     </div>
 </section>
+
+{% endblock %}
+{% block user %}
+<section class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Blogs</h1>           
+        </div>
+        
+        <div class="row">
+            <div class="col-md-9 col-content">
+                <div class="blog-posts-list">
+                    {% for blog in blogs %}
+                    <div class="blog-post">
+                        <div class="item-cover">
+                            <a href="{% url 'blog_detail' blog.id %}">
+                                <img src="/media/blogimages/{{blog.blog_image }}" alt="blog post">
+                            </a>
+                        </div>
+
+                        <h2 class="post-title"><a href="{% url 'blog_detail' blog.id %}">{{blog.name}}</a></h2>
+
+                        <ul class="post-meta clean-list">
+                            <li>{{blog.created_at}}</li>
+                        </ul>
+
+                        <p class="description">{{ blog.description|slice:":100" }}{% if blog.description|length > 100 %}...{% endif %}</p>
+                        <a class="btn grey" href="{% url 'blog_detail' blog.id %}">read more</a>                      
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% comment %} 
+                <ul class="page-numbers">
+                    <li><a class="prev page-numbers" href="#">prev</a></li>
+                    <li><span class="page-numbers current">1</span></li>
+                    <li><a class="page-numbers" href="#">2</a></li>
+                    <li><a class="page-numbers" href="#">3</a></li>
+                    <li><a class="page-numbers" href="#">4</a></li>
+                    <li><a class="page-numbers" href="#">5</a></li>
+                    <li><a class="page-numbers" href="#">6</a></li>
+                    <li><a class="next page-numbers" href="#">next</a></li>
+                </ul> 
+                {% endcomment %}
+            </div>
+
+            <div class="col-md-3 col-sidebar">
+                <div class="sidebar">
+                    <div class="row isotope">
+                        
+                        
+                        <div class="col-md-12 col-sm-6 col-xs-12 isotope-item">
+                            <div class="widget widget_categories">
+                                <h4 class="widget-title">Project Categories</h4>                                
+                                <ul>
+                                    <li><a href="{% url 'project' %}">All</a></li>
+                                    {% for category in categories%}
+                                        <li><a href="{% url 'project' %}?category={{ category.id }}">{{ category.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-6 col-xs-12 isotope-item">
+                            <div class="widget widget_recent_posts">
+                                <h4 class="widget-title">Recent Posts</h4>
+                                <div class="widget-body">
+                                    <ul class="recent-posts clean-list">
+                                        {% for blog in recent_blogs %}
+                                        <li>
+                                            <h4><a href="{% url 'blog_detail' blog.id %}">{{blog.name}}</a></h4>
+                                            <ul class="post-meta">
+                                                <li>{{blog.created_at}}</li>
+                                            </ul>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>	
+    </div>
+</section>
+
+
+
 {% endblock %}

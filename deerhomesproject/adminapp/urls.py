@@ -1,10 +1,11 @@
-
-from django.urls import path
-from . import views
-from django.urls import path
-from django.conf.urls.static import static
-from deerhomesproject import settings 
+from django.urls import path, re_path
 from.import views
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.static import serve
+
+
+from deerhomesproject import settings 
 from django.contrib.auth.views import LoginView
 
 
@@ -33,15 +34,12 @@ urlpatterns = [
    path("contact-us",views.contact,name='contactus'),
    path("contact-us/<int:id>",views.contactview,name='contactview'),   
    path("contact-us/<int:id>/edit",views.contactedit,name='contactedit'),  
-   
-   
-   
-   
-   
    path("category",views.category,name='category'),
    path("category-create",views.categorycreate,name='categorycreate'),
    path("change-password",views.changepassword,name='changepassword'),
    
-   
+   re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
    
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

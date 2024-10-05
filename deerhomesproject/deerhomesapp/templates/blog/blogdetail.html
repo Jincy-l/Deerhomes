@@ -1,67 +1,170 @@
 {% extends 'layout/userindex.html' %}
+
 {% load static %}
 {% block headingblock %}
 
-<section class="sub-banner_section">
-    <figure class="banner-backgroundimage mb-0">
-        <img src="{%static 'userassets/images/project-backgroundimage.jpg' %}" alt="" class="img-fluid">
-    </figure>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-12">
-            <div class="banner_content" data-aos="fade-up">
-                <h1>Blogs</h1>
-                <p class="text-size-14 text-white mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                    dolore eu fugiat nulla pariat cepteur sint o ccaecat cupidatat.
-                </p>
-            </div>
-        </div>
-        <div class="col-xl-7 col-lg-6 col-md-4 col-sm-12 col-12 d-lg-block d-none">
-        </div>
-    </div>
-</div>
-</section>
-{% endblock %}
-{% block user %}
-<!-- Single-blog -->
-<section class="singleblog-section">
+<section class="hero-section">
+    <h2 class="hidden">Slider Section</h2>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="main-box">
-                    <h3>{{blog.name}}</h3>
-                    <figure class="image1" data-aos="fade-up">
-                        <img src="{% static 'userassets/images/singleblog-image1.jpg' %}" alt="" class="img-fluid">
-                    </figure>
-                                      
-                    <div class="angelina-content">
-                        <figure class="angelinaclark-image" data-aos="flip-left">
-                            <img src="{% static 'userassets/images/angelinaclark-image.png' %}" alt="" class="img-fluid">
-                        </figure>
-                       
+            <div class="col-sm-12">
+                <div class="rev_slider_wrapper">
+                    <div class="fullwidth_slider rev_slider" data-arrows="false" data-height="750">
+                        <ul>		
+                            <li data-transition="fade">			
+
+                                <img src="{% static 'userassets/img/cover-1.png' %}" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+
+                                <div class="tp-caption WhiteTtl tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="-32" 
+                                    data-whitespace="nowrap"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-150px;opacity:0;s:1000;e:Power4.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1300"
+                                    data-responsive_offset="on">Deer Homes
+                                </div>
+                                
+                                <div class="tp-caption WhiteTtlp tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="32" 
+                                    data-whitespace="pre"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-100px;opacity:0;s:1000;e:Power2.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1700" 
+                                    data-responsive_offset="on"> Interior Designer & Architecture Firm
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="content1">
-                        
-                        <p class="paragraph2 text-size-14">{{blog.description}}
-                        </p>
-                     
-                    </div>
-                    <div class="row position-relative">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                            <figure class="image2" data-aos="fade-left">
-                                <img src="{% static 'userassets/images/singleblog-image2.jpg' %}" alt="" class="img-fluid">
-                            </figure>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                            <figure class="image2 image3" data-aos="fade-right">
-                                <img src="{% static 'userassets/images/singleblog-image3.jpg' %}" alt="" class="img-fluid">
-                            </figure>
-                        </div>
-                    </div>
-                   
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+{% endblock %}
+{% block user %}
+<section class="single-post-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-content">
+                <div class="blog-posts-list single">
+                    <div class="blog-post">
+                        <div class="slick-carousel gallery" data-breakpoint="0" data-fade="true" data-arrows="false" data-speed="2000" data-dots="true" data-infinite="true" data-items-desktop="1">	
+                            <ul class="clean-list carousel-items">
+                                <li class="carousel-item">
+                                    <img src="\media\blogimages\{{blog.blog_image }}" alt="blog post">
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h2 class="post-title">{{blog.name}}</h2>
+
+                        <ul class="post-meta clean-list">
+                            <li>{{blog.created_at}}</li>
+                        </ul>
+
+                        <div class="entry">
+                            <p>{{blog.description}}</p>
+                        </div>
+
+                        <div class="post-footer">
+                            <div class="tags">
+                                <a class="custom-link" href="#">concepts</a>
+                                <a class="custom-link" href="#">ideas</a>
+                            </div>
+                        </div>
+
+                        <div class="post-navigation">
+                            {% comment %} <a class="prev" href="#">PREV</a> {% endcomment %}
+                            {% comment %} <a class="next" href="#">NEXT</a> {% endcomment %}
+                            <a class="next" href="{% url 'blog' %}">BACK</a>
+                        </div>
+
+                        <div class="related-posts">
+                            <h6 class="box-title">Recent Blogs</h6>
+
+                            <div class="row">
+
+                                {% for blog in recent_blogs %}                               
+                                    <div class="col-md-4">
+                                        <div class="blog-post-item">
+                                            <div class="rel-cover">
+                                                <a href="{% url 'blog_detail' blog.id %}">
+                                                    <img class="aligncenter" src="\media\blogimages\{{blog.blog_image }}" alt="blog item">
+                                                </a>
+                                            </div>
+                                            <h5 class="title"><a href="{% url 'blog_detail' blog.id %}">{{blog.name}}</a></h5>
+                                            <ul class="post-meta clean-list">
+                                                <li>{{blog.created_at}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                     
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sidebar">
+                <div class="sidebar">
+                    <div class="row isotope">                       
+                        <div class="col-md-12 col-sm-6 col-xs-12 isotope-item">
+                            <div class="widget widget_categories">
+                                <h4 class="widget-title">Project Categories</h4>                                
+                                <ul>
+                                    <li><a href="{% url 'project' %}">All</a></li>
+                                    {% for category in categories%}
+                                        <li><a href="{% url 'project' %}?category={{ category.id }}">{{ category.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-6 col-xs-12 isotope-item">
+                            <div class="widget widget_recent_posts">
+                                <h4 class="widget-title">Recent Blogs</h4>
+                                <div class="widget-body">
+                                    <ul class="recent-posts clean-list">
+                                        {% for blog in recent_blogs %}
+                                        <li>
+                                            <h4><a href="{% url 'blog_detail' blog.id %}">{{blog.name}}</a></h4>
+                                            <ul class="post-meta">
+                                                <li>{{blog.created_at}}</li>
+                                            </ul>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-6 col-xs-12 isotope-item">
+                            <div class="widget widget_recent_posts">
+                                <h4 class="widget-title">Recent Projects</h4>
+                                <div class="widget-body">
+                                    <ul class="recent-posts clean-list">
+                                        {% for recent_project in recent_projects %}
+                                        <li>
+                                            <h4><a href="{% url 'project_detail' recent_project.id %}">{{recent_project.name}}</a></h4>
+                                            <ul class="post-meta">
+                                                <li>{{recent_project.address}}</li>
+                                            </ul>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>	
     </div>
 </section>
 {% endblock %}

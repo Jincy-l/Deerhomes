@@ -27,7 +27,7 @@
         <!-- header -->
         <div class="header">
             <div class="nav-header">
-                <div class="brand-logo"><a href="index.html"><b><img src="{% static 'adminassets/images/deerhomes-logo.png' %}" alt=""> </b><span class="brand-title">DEER HOMES</span></a>
+                <div class="brand-logo"><a href=""><b><img src="{% static 'adminassets/images/deerhomes-logo.png' %}" alt=""> </b><span class="brand-title">DEER HOMES</span></a>
                 </div>
                 <div class="nav-control">
                     <div class="hamburger"><span class="line"></span> <span class="line"></span> <span class="line"></span>
@@ -87,14 +87,14 @@
                     <li><a href="{% url 'dashboard' %}"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Dashboard</span></a></li>
                     <li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-folder"></i> <span class="nav-text">Project</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="{% url 'projects' %}">Projects</a></li>
-                            <li><a href="{% url 'projectcreate' %}">Create Projects</a></li>
+                            <li><a href="{% url 'projectcreate' %}">Create Project</a></li>
+                            <li><a href="{% url 'projects' %}">Projects List </a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-folder"></i> <span class="nav-text">Blog</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="{% url 'blogss' %}">Blogs</a></li>
-                            <li><a href="{% url 'createBlogs' %}">Create Blogs</a></li>
+                            <li><a href="{% url 'createBlogs' %}">Create Blog</a></li>
+                            <li><a href="{% url 'blogss' %}">Blogs List </a></li>
                         </ul>
                     </li>
                     {% comment %} <li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-folder"></i> <span class="nav-text">Category</span></a>
@@ -105,7 +105,7 @@
                     </li> {% endcomment %}
                     {% comment %} <li><a href=""><i class="mdi mdi-map"></i> <span class="nav-text">Services</span></a></li>
                     <li><a href=""><i class="mdi mdi-information"></i> <span class="nav-text">About us</span></a></li> {% endcomment %}
-                    <li><a href="{% url 'contactus' %}"><i class="mdi mdi-phone"></i> <span class="nav-text">Contact us</span></a></li>
+                    <li><a href="{% url 'contactus' %}"><i class="mdi mdi-phone"></i> Enquries <span class="nav-text"></span></a></li>
                 </ul>
             </div>
         </div>

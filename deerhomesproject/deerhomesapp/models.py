@@ -4,8 +4,6 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
-
-
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
@@ -116,6 +114,11 @@ class projectss(models.Model) :
             return self.deleted_at is not None          
         def __str__(self):
             return self.name
+        
+class tbl_sub_image(models.Model) :
+      project_id = models.ForeignKey(projectss, on_delete=models.CASCADE, related_name='projects',null=True, blank=True)
+      subimage = models.TextField(blank=True,null=True)
+            
 class tbl_blogs(models.Model):
         
         name=models.CharField(max_length=100)
@@ -139,12 +142,14 @@ class tbl_blogs(models.Model):
             self.save()
         def is_deleted(self):
             return self.deleted_at is not None          
-        def __int__(self):
-            return self.id
+        def __str__(self):
+            return self.name
 class tbl_blog_sub(models.Model):
-    blog_id = models.ForeignKey(tbl_blogs, on_delete=models.CASCADE)
-    sub_title=models.TextField(max_length=255, null=True, blank=True)
-    sub_title_content=models.TextField(max_length=255, null=True, blank=True)
+    blog_id = models.ForeignKey(tbl_blogs, on_delete=models.CASCADE, related_name='sub_blogs',null=True, blank=True)
+    sub_title=models.TextField()
+    sub_title_content=models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
     objects = SoftDeleteManager()        
     def soft_delete(self):

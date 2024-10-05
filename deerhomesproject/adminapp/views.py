@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
-from deerhomesapp.models import login as log,projectss,Category,Contactus,tbl_blogs,tbl_blog_sub
+from . models import *
+from deerhomesapp.models import login as log,projectss,Category,Contactus,tbl_blogs,tbl_blog_sub,tbl_sub_image
 from django.core.files.storage import FileSystemStorage
 import hashlib
 from django.contrib import messages
@@ -14,11 +15,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.http import HttpResponse
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 import os  
+from django.db import transaction
 from django.utils.text import slugify
 
 def loginpage(request):
@@ -96,49 +99,65 @@ def projectcreate(request):
     categories = Category.objects.all()
    
     if request.method =="POST":
-        name= request.POST['name']
-        address= request.POST['address']
-        amount= request.POST['amount']
-        description= request.POST['description']
-        location= request.POST['location']
-        area= request.POST['area']
-        image=request.FILES.get('projectimages')
-        cat_id= request.POST['cat_id']
-        category = get_object_or_404(Category, id=cat_id)
-        if image:
-            base_name, extension = os.path.splitext(image.name)
-            base_name = base_name.replace(" ", "_")
-            safe_base_name = slugify(base_name)
-            fs = FileSystemStorage(location='media/projectimages', base_url='/media/')
-            project_image_filename = f"{safe_base_name}{extension}"
-            project_image_filename = fs.save( project_image_filename, image)            
-        else:
-             project_image_filename = '' 
-             project_image_filename = os.path.join("projectimages", project_image_filename)
-
-        pro = projectss(
-            name=name,
-            address=address,
-            amount=amount,
-            description=description,
-            location=location,
-            image=image,
-            area = area,
-            cat_id = category        
-        )        
-        pro.save()        
-        return redirect('projectedit', pro.id)
+        try:
+            with transaction.atomic(): 
+                name= request.POST['name']
+                address= request.POST['address']
+                amount= request.POST['amount']
+                description= request.POST['description']
+                location= request.POST['location']
+                area= request.POST['area']
+                image=request.FILES.get('projectimages')
+                cat_id= request.POST['cat_id']
+                category = Category.objects.filter(id=cat_id).first()                
+                project_image_filename = '' 
+                if image:
+                    base_name, extension = os.path.splitext(image.name)
+                    base_name = base_name.replace(" ", "_")
+                    safe_base_name = slugify(base_name)
+                    fs = FileSystemStorage(location='media/projectimages', base_url='/media/')
+                    project_image_filename = f"{safe_base_name}{extension}"
+                    project_image_filename = fs.save( project_image_filename, image)            
+                    
+                pro = projectss(
+                    name=name,
+                    address=address,
+                    amount=amount,
+                    description=description,
+                    location=location,
+                    image=project_image_filename,                
+                    area = area,
+                    cat_id = category
+                )        
+                pro.save()  
+                sub_images = request.FILES.getlist('subimages[]')                
+                for sub_image in sub_images:
+                    base_name, extension = os.path.splitext(sub_image.name)
+                    base_name = base_name.replace(" ", "_")
+                    safe_base_name = slugify(base_name)
+                    fs = FileSystemStorage(location='media/projectsubimages', base_url='/media/')
+                    project_sub_image_filename = f"{safe_base_name}{extension}"
+                    project_sub_image_filename = fs.save( project_sub_image_filename, sub_image)       
+                    sub = tbl_sub_image(
+                        subimage=project_sub_image_filename, 
+                        project_id=pro 
+                    )
+                    sub.save()                    
+                return redirect('projectedit', pro.id)            
+                
+        except Exception as e:
+            messages.error(request, f"An error occurred: {str(e)}")
+            return redirect(request.META.get('HTTP_REFERER', '/'))
     context={
         'edit':True,
         'categories':categories
     }
     return render(request,'project/projectcreate.html',context)
+
 def projects(request):
-    list = projectss.objects.all()
-    context={
-        'projects':list
-    }
-    return render(request,'project/projectlist.html',context)
+    projects1 = projectss.objects.all()
+    return render(request,'project/projectlist.html',{'projects':projects1})
+    # return HttpResponse('<h1>Please, enter your username</h1>')
  
 def projectview(request, id):
     project = get_object_or_404(projectss, id=id)    
@@ -153,35 +172,54 @@ def projectedit(request, id):
     project = get_object_or_404(projectss, id=id)
     categories = Category.objects.all()  
     if request.method =="POST":
-        name= request.POST['name']
-        address= request.POST['address']
-        amount= request.POST['amount']
-        description= request.POST['description']
-        location= request.POST['location']
-        image=request.FILES.get('projectimages')
-        cat_id= request.POST['cat_id']
-        area =  request.POST['area']        
-        category = get_object_or_404(Category, id=cat_id)
-        
-        project.name = name
-        project.address = address
-        project.amount = amount
-        project.description = description
-        project.location = location
-        project.cat_id = category  
-        project.area = area 
-        project.image=image 
-        project.save()
-        if image:
-            base_name, extension = os.path.splitext(image.name)
-            base_name = base_name.replace(" ", "_")
-            safe_base_name = slugify(base_name)
-            fs = FileSystemStorage(location='media/projectimages', base_url='/media/')
-            blog_image_filename = f"{safe_base_name}{extension}"
-            blog_image_filename = fs.save( blog_image_filename, image)            
-        else:
-             blog_image_filename = '' 
-        
+        try:
+            with transaction.atomic(): 
+                name= request.POST['name']
+                address= request.POST['address']
+                amount= request.POST['amount']
+                description= request.POST['description']
+                location= request.POST['location']
+                area= request.POST['area']
+                image=request.FILES.get('projectimages')
+                cat_id= request.POST['cat_id']
+                # category = Category.objects.filter(id=cat_id).first()
+                category = get_object_or_404(Category, id=cat_id)
+                project_image_filename = '' 
+                if image:
+                    base_name, extension = os.path.splitext(image.name)
+                    base_name = base_name.replace(" ", "_")
+                    safe_base_name = slugify(base_name)
+                    fs = FileSystemStorage(location='media/projectimages', base_url='/media/')
+                    project_image_filename = f"{safe_base_name}{extension}"
+                    project_image_filename = fs.save( project_image_filename, image)                    
+                    project.image=project_image_filename           
+             
+                project.name = name
+                project.address = address
+                project.amount = amount
+                project.description = description
+                project.location = location
+                project.cat_id = category  
+                project.area = area 
+                project.save()
+                sub_images = request.FILES.getlist('subimages[]')
+                for sub_image in sub_images:                    
+                    project_sub_image_filename = '' 
+                    base_name, extension = os.path.splitext(sub_image.name)
+                    base_name = base_name.replace(" ", "_")
+                    safe_base_name = slugify(base_name)
+                    fs = FileSystemStorage(location='media/projectsubimages', base_url='/media/')
+                    project_sub_image_filename = f"{safe_base_name}{extension}"
+                    project_sub_image_filename = fs.save( project_sub_image_filename, sub_image)       
+                    sub = tbl_sub_image(
+                        subimage=project_sub_image_filename, 
+                        project_id=project 
+                    )
+                    sub.save()                   
+                return redirect('projectedit', project.id)      
+        except Exception as e:
+            messages.error(request, f"An error occurred: {str(e)}")
+            return redirect(request.META.get('HTTP_REFERER', '/'))    
         
     context={
         'edit':True,
@@ -198,47 +236,46 @@ def projectdelete(request, id):
 
 def createBlogs(request):
     if request.method =="POST":
-        name= request.POST['name']
-        # slug= request.POST['slug']
-        image=request.FILES.get('blog_image')
-        subtitles = request.POST.get('subtitlename')  # Fetching list of subtitles
-        sub_contents = request.POST.get('subtitlecontent')
-        description= request.POST['description']
-        metatag= request.POST['metatag']
-        metakeyword= request.POST['metakeyword']
-        metadescription= request.POST['metaDescription']
-        if image:
-            base_name, extension = os.path.splitext(image.name)
-            base_name = base_name.replace(" ", "_")
-            safe_base_name = slugify(base_name)
-            fs = FileSystemStorage(location='media/blogimages', base_url='/media/')
-            blog_image_filename = f"{safe_base_name}{extension}"
-            blog_image_filename = fs.save( blog_image_filename, image)            
-        else:
-             blog_image_filename = '' 
-             
-        # new_blog = tbl_blogs.objects.create(name=name,  description=description, blog_image=image)
-        
-        
-        blog_image_filename = os.path.join("blogimages", blog_image_filename)
-        new_blog = tbl_blogs(
-            name=name,
-            # slug=slug,           
-            blog_image=blog_image_filename,
-            description=description,
-            metatag=metatag,
-            metakeyword=metakeyword,
-            metadescription=metadescription
-        )
-        new_blog.save()
-        # for subtitle, sub_content in zip(subtitles, sub_contents):
-        #     if subtitle and sub_content: 
-        if new_blog:
-            tbl_blog_sub.objects.create(blog_id_id=new_blog, sub_title=subtitles, sub_title_content=sub_contents)
+        try:
+            with transaction.atomic():  
+                name= request.POST['name']
+                # slug= request.POST['slug']
+                image=request.FILES.get('blog_image')
+                subtitles = request.POST.getlist('subtitlename[]')  # Fetching list of subtitles
+                sub_contents = request.POST.getlist('subtitlecontent[]')
+                description= request.POST['description']
+                metatag= request.POST['metatag']
+                metakeyword= request.POST['metakeyword']
+                metadescription= request.POST['metaDescription']
                 
-        
-        
-        return redirect('blogEdit', new_blog.id)
+                blog_image_filename = '' 
+                if image:
+                    base_name, extension = os.path.splitext(image.name)
+                    base_name = base_name.replace(" ", "_")
+                    safe_base_name = slugify(base_name)
+                    fs = FileSystemStorage(location='media/blogimages', base_url='/media/')
+                    blog_image_filename = f"{safe_base_name}{extension}"
+                    blog_image_filename = fs.save( blog_image_filename, image)    
+                    # blog_image_filename = os.path.join("blogimages", blog_image_filename)
+                    new_blog = tbl_blogs(
+                        name=name,
+                        # slug=slug,           
+                        blog_image=blog_image_filename,
+                        description=description,
+                        metatag=metatag,
+                        metakeyword=metakeyword,
+                        metadescription=metadescription
+                    )
+                    new_blog.save()
+                    if new_blog:
+                        for subtitle, sub_content in zip(subtitles, sub_contents):
+                            if subtitle and sub_content: 
+                                tbl_blog_sub.objects.create(blog_id=new_blog, sub_title=subtitle, sub_title_content=sub_content)
+
+        except Exception as e:
+              messages.error(request, f"An error occurred: {str(e)}")
+              return redirect(request.META.get('HTTP_REFERER', '/')) 
+        return redirect('blogss')
         
     context={
         'edit':True
@@ -258,39 +295,54 @@ def blogEdit(request, id):
     blog = get_object_or_404(tbl_blogs, id=id)
      
     if request.method =="POST":
-        name= request.POST['name']
-        description= request.POST['description']
-        metatag= request.POST['metatag']
-        metakeyword= request.POST['metakeyword']
-        metadescription= request.POST['metaDescription']
-        image=request.FILES.get('blog_image')
-        if image:            
-            base_name, extension = os.path.splitext(image.name)
-            base_name = base_name.replace(" ", "_")
-            safe_base_name = slugify(base_name)
-            fs = FileSystemStorage(location='media/blogimages', base_url='/media/')
-            blog_image_filename = f"{safe_base_name}{extension}"
-            blog_image_filename = fs.save( blog_image_filename, image)
-        else:
-             blog_image_filename = ''
-   
+        try:
+            with transaction.atomic():  
+                name= request.POST['name']
+                description= request.POST['description']
+                metatag= request.POST['metatag']
+                metakeyword= request.POST['metakeyword']
+                metadescription= request.POST['metaDescription']                
+                subtitles = request.POST.getlist('subtitlename[]')  # Fetching list of subtitles
+                sub_contents = request.POST.getlist('subtitlecontent[]')
+                blog_image_filename = ''
+                image=request.FILES.get('blog_image')
+                if image:            
+                    base_name, extension = os.path.splitext(image.name)
+                    base_name = base_name.replace(" ", "_")
+                    safe_base_name = slugify(base_name)
+                    fs = FileSystemStorage(location='media/blogimages', base_url='/media/')
+                    blog_image_filename = f"{safe_base_name}{extension}"
+                    blog_image_filename = fs.save( blog_image_filename, image)                    
+                    blog.blog_image=blog_image_filename
               
-        blog.name = name
-        blog.description = description
-        blog.metatag = metatag
-        
-        blog.blog_image=blog_image_filename,
-        blog.metakeyword = metakeyword
-        blog.metadescription = metadescription  
-        blog. blog_image=image     
-        blog.save()
+                blog.name = name
+                blog.description = description
+                blog.metatag = metatag
                 
+                blog.metakeyword = metakeyword
+                blog.metadescription = metadescription  
+                blog. blog_image=image     
+                blog.save()
+                
+                if blog:
+                        for subtitle, sub_content in zip(subtitles, sub_contents):
+                            if subtitle and sub_content: 
+                                tbl_blog_sub.objects.create(blog_id=blog, sub_title=subtitle, sub_title_content=sub_content)
+                                # tbl_blog_sub(
+                                #             blog_id=new_blog, 
+                                #             sub_title=subtitle,
+                                #             sub_title_content=sub_content
+                                #         ).save()     
+        except Exception as e:
+            messages.error(request, f"An error occurred: {str(e)}")
+            return redirect(request.META.get('HTTP_REFERER', '/'))        
     context={
         'edit':True,
         'blog':blog,
         
     }
     return render(request,'blog/createblogs.html',context)
+
 def blogDelete(request, id):
     blog = get_object_or_404(tbl_blogs, id=id)
     if request.method =="POST":

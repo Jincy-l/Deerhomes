@@ -1,0 +1,89 @@
+{% extends 'layout/userindex.html' %}
+{% load static %}
+{% block headingblock %}
+
+<section class="sub-banner_section">
+    <figure class="banner-backgroundimage mb-0">
+        <img src="{%static 'userassets/images/project-backgroundimage.jpg' %}" alt="" class="img-fluid">
+    </figure>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-12">
+            <div class="banner_content aos-init" data-aos="fade-up">
+                <h1>Projects</h1>
+                <p class="text-size-14 text-white mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                    dolore eu fugiat nulla pariat cepteur sint o ccaecat cupidatat.
+                </p>
+            </div>
+        </div>
+        <div class="col-xl-7 col-lg-6 col-md-4 col-sm-12 col-12 d-lg-block d-none">
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}
+{% block user %}
+<!-- Header  -->
+
+       
+
+
+        
+       
+<!-- Residential -->
+<section class="servicepage-section">
+    <div class="residential-section">
+        <figure class="servicepage-background mb-0">
+            <img src="{% static 'userassets/images/servicepage-background.png' %}" alt="" class="img-fluid">
+        </figure>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="service_wrapper">
+                        <figure class="servicepage-circularimage mb-0">
+                            <img src="" alt="" class="">
+                        </figure>
+                        <figure class="servicepage-image mb-0">
+                            <img src="{% static 'userassets/images/servicepage-residentialimage.jpg' %}" alt="" class="">
+                        </figure>
+                        <figure class="servicepage-rightborder mb-0">
+                            <img src="{% static 'userassets/images/servicepage-imagerightborder.png' %}" alt="" class="img-fluid">
+                        </figure>
+                        <figure class="servicepage-boximage mb-0">
+                            <img src="{% static 'userassets/images/servicepage-boximage.png' %}" alt="" class="img-fluid">
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="service_content" data-aos="fade-right">
+                        {% comment %} {% for projects in projects %} {% endcomment %}
+                        <h3>{{projects.name}}</h3>
+                        <p class="text-size-14">{{projects.description}}</p>
+                        <figure class="servicepage-contentimage">
+                            <img src="{% static 'userassets/images/servicepage-contentimage.png' %}" alt="" class="img-fluid">
+                        </figure>
+                        <ul class="list-unstyled mb-0">
+                            <li class="text text-size-14"><i class="circle fa-duotone fa-check"></i>Amount : {{projects.amount}}</li>
+                            <li class="text text-size-14"><i class="circle fa-duotone fa-check"></i>Area(sqft) : {{projects.area}}</li>
+                            <li class="text text-size-14"><i class="circle fa-duotone fa-check"></i>Address  : {{projects.address}}</li>
+                            {% comment %} <li class="text text-size-14"><i class="circle fa-duotone fa-check"></i>category Name : {{projects.}}</li> {% endcomment %}
+                        </ul>
+                        {% comment %} {% endfor %} {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<!-- Restaurant -->
+
+<!-- Contact -->
+<section class="contact-section">
+   
+   
+</section>
+<!-- Architectural -->
+
+
+{% endblock %}

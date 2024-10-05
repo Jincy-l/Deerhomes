@@ -1,89 +1,218 @@
 {% extends 'layout/userindex.html' %}
+
 {% load static %}
 {% block headingblock %}
 
-<section class="sub-banner_section">
-    <figure class="banner-backgroundimage mb-0">
-        <img src="{%static 'userassets/images/project-backgroundimage.jpg' %}" alt="" class="img-fluid">
-    </figure>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-12">
-            <div class="banner_content aos-init" data-aos="fade-up">
-                <h1>Projects</h1>
-                <p class="text-size-14 text-white mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                    dolore eu fugiat nulla pariat cepteur sint o ccaecat cupidatat.
-                </p>
+<section class="hero-section">
+    <h2 class="hidden">Slider Section</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="rev_slider_wrapper">
+                    <div class="fullwidth_slider rev_slider" data-arrows="false" data-height="750">
+                        <ul>		
+                            <li data-transition="fade">			
+
+                                <img src="{% static 'userassets/img/cover-1.png' %}" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+
+                                <div class="tp-caption WhiteTtl tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="-32" 
+                                    data-whitespace="nowrap"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-150px;opacity:0;s:1000;e:Power4.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1300"
+                                    data-responsive_offset="on"> Deer Homes
+                                </div>
+                                
+                                <div class="tp-caption WhiteTtlp tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="32" 
+                                    data-whitespace="pre"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-100px;opacity:0;s:1000;e:Power2.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1700" 
+                                    data-responsive_offset="on"> Interior Designer & Architecture Firm
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-xl-7 col-lg-6 col-md-4 col-sm-12 col-12 d-lg-block d-none">
-        </div>
     </div>
-</div>
 </section>
+
 {% endblock %}
 {% block user %}
-<!-- Header  -->
+{% comment %} <section class="testimonials slider">
+    <div class="container">
+        <div class="section-header">
+            <h5 class="subtitle"></h5>
+            <h2> About us</h2>
+            <span><i></i></span>
+            <p>
+                Deerhomes® is a team of highly skilled professionals including Architects, Interior designers and Engineers sharing a deep passion for excellence, blending creativity with technical precision. We believe we can make life better for our clients though design. A well-designed space enhances the quality of everyday living. Be it a home or a commercial space, - circulation patterns, and creation of a comfortable micro environment is the result of careful planning, creative thinking, and flawless execution. By creating sustainable building modules using materials with a reduced carbon footprint, we try to create a better building system for the future generations. Top noch design and planning ensures that our projects create a better quality of life for our clients while efficiency in design is translated into cost savings in all the major projects of deerhomes. Our versatile design philosophy encompasses various architectural styles of the past to present so our porƞolio ranges from a contemporary minimalistic design approach to classical renaissance styles and traditional kerala architecture styles. Our project management team lead by experienced project managers, engineers and contractors ensure that the concepts and ideas originating from the drawing table is converted into built space flawlessly within the scheduled time. Deerhomes was founded in 1999 by Deepak Somarajan an architectural engineer from 97th batch of NIT Calicut, his wife Parvathy Vijayan a structural engineer from 2004 batch TKM Engineering college later joined the company as its director.
+            </p>
+        </div>
+    </div>
+</section> {% endcomment %}
+<section class="single-post-section portfolio">
+    <div class="container">
+        <center> 
+            <h2> {{projects.name}} </h2> 
+        </center>            
+        <div class="row">
+            <div class="col-md-9 col-content">
+                <div class="blog-posts-list single">
+                    <div class="blog-post">
+                        <div class="entry">
+                            <div class="slick-carousel gallery" data-breakpoint="0" data-fade="true" data-arrows="false" data-speed="2000" data-dots="true" data-infinite="true" data-items-desktop="1">	
+                                <ul class="clean-list carousel-items">
+                                    <li class="carousel-item">
+                                        {% comment %} <img src="https://livewp.site/html/bricks/img/portfolio-post-1.jpg" alt="blog post"> {% endcomment %}
+                                        <img src="/media/projectimages/{{ projects.image }}" alt="portfolio box">
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>
+                                {{projects.description}}
+                            </p>
+                            
+                            <h5>Amount : {{projects.amount}}</h5>
+                            <h5>Area(sqft) : {{projects.area}} </h5>
+                            <h5> Address  : {{projects.address}}</h5>
+                          
+                            <div class="gallery clearfix">
 
-       
 
+                                {% for sub_image in sub_images%}
+                                <div class="gallery-item">
+                                    <div class="cover">
+                                        <img src="/media/projectsubimages/{{sub_image.subimage }}" alt="gallery-item">
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
 
-        
-       
-<!-- Residential -->
-<section class="servicepage-section">
-    <div class="residential-section">
-        <figure class="servicepage-background mb-0">
-            <img src="{% static 'userassets/images/servicepage-background.png' %}" alt="" class="img-fluid">
-        </figure>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="service_wrapper">
-                        <figure class="servicepage-circularimage mb-0">
-                            <img src="" alt="" class="">
-                        </figure>
-                        <figure class="servicepage-image mb-0">
-                            <img src="{% static 'userassets/images/servicepage-residentialimage.jpg' %}" alt="" class="">
-                        </figure>
-                        <figure class="servicepage-rightborder mb-0">
-                            <img src="{% static 'userassets/images/servicepage-imagerightborder.png' %}" alt="" class="img-fluid">
-                        </figure>
-                        <figure class="servicepage-boximage mb-0">
-                            <img src="{% static 'userassets/images/servicepage-boximage.png' %}" alt="" class="img-fluid">
-                        </figure>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="service_content" data-aos="fade-right">
-                        {% comment %} {% for projects in projects %} {% endcomment %}
-                        <h3>{{projects.name}}</h3>
-                        <p class="text-size-14">{{projects.description}}</p>
-                        <figure class="servicepage-contentimage">
-                            <img src="{% static 'userassets/images/servicepage-contentimage.png' %}" alt="" class="img-fluid">
-                        </figure>
-                        <ul class="list-unstyled mb-0">
-                            <li class="text text-size-14"><i class="circle fa-duotone fa-check"></i>Amount : {{projects.amount}}</li>
-                            <li class="text text-size-14"><i class="circle fa-duotone fa-check"></i>Area(sqft) : {{projects.area}}</li>
-                            <li class="text text-size-14"><i class="circle fa-duotone fa-check"></i>Address  : {{projects.address}}</li>
-                            {% comment %} <li class="text text-size-14"><i class="circle fa-duotone fa-check"></i>category Name : {{projects.}}</li> {% endcomment %}
-                        </ul>
-                        {% comment %} {% endfor %} {% endcomment %}
+                        <div class="post-navigation">
+                            <a class="prev" href="#">PREV</a>
+                            <a class="next" href="#">NEXT</a>
+                        </div>
+
+                        <div class="related-posts">
+                            <h6 class="box-title">Recent Projects</h6>
+
+                            
+
+                            <div class="row">
+                                {% for recent_project in recent_projects%}
+                                <div class="col-md-4">
+                                    <div class="blog-post-item">
+                                        <div class="rel-cover">
+                                            <a href="{% url 'project_detail' recent_project.id %}">
+                                                <img class="aligncenter" src="/media/projectimages/{{ recent_project.image }}" alt="blog item">
+                                            </a>
+                                        </div>
+                                        <h5 class="title"><a href="{% url 'project_detail' recent_project.id %}">{{ recent_project.name }}</a></h5>
+                                        <ul class="post-meta clean-list">
+                                            <li>{{ recent_project.created_at }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% comment %} <div class="col-md-6">
+                                    <div class="blog-post-item">
+                                        <div class="rel-cover">
+                                            <a href="#">
+                                                <img class="aligncenter" src="https://livewp.site/html/bricks/img/related-post-4.jpg" alt="blog item">
+                                            </a>
+                                        </div>
+                                        <h5 class="title"><a href="#">Sed ut perspiciatis unde omnis</a></h5>
+                                        <ul class="post-meta clean-list">
+                                            <li>June 08, 2018</li>
+                                            <li>by <a href="#">Mixuha</a></li>
+                                            <li><a href="#">0 Comments</a></li>
+                                        </ul>
+                                    </div>
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="col-md-3 col-sidebar">
+                <div class="sidebar">
+                    <div class="row isotope">
+                        
+                        
+                        <div class="col-md-12 col-sm-6 col-xs-12 isotope-item">
+                            <div class="widget widget_categories">
+                                <h4 class="widget-title">Project Categories</h4>                                
+                                <ul>
+                                    <li><a href="{% url 'project' %}">All</a></li>
+                                    {% for category in categories%}
+                                        <li><a href="{% url 'project' %}?category={{ category.id }}">{{ category.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-6 col-xs-12 isotope-item">
+                            <div class="widget widget_recent_posts">
+                                <h4 class="widget-title">Recent Blogs</h4>
+                                <div class="widget-body">
+                                    <ul class="recent-posts clean-list">
+                                        {% for blog in recent_blogs %}
+                                        <li>
+                                            <h4><a href="{% url 'blog_detail' blog.id %}">{{blog.name}}</a></h4>
+                                            <ul class="post-meta">
+                                                <li>{{blog.created_at}}</li>
+                                            </ul>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-6 col-xs-12 isotope-item">
+                            <div class="widget widget_recent_posts">
+                                <h4 class="widget-title">Recent Projects</h4>
+                                <div class="widget-body">
+                                    <ul class="recent-posts clean-list">
+                                        {% for recent_project in recent_projects %}
+                                        <li>
+                                            <h4><a href="{% url 'project_detail' recent_project.id %}">{{recent_project.name}}</a></h4>
+                                            <ul class="post-meta">
+                                                <li>{{recent_project.address}}</li>
+                                            </ul>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>	
     </div>
 </section>
-<br>
-<!-- Restaurant -->
 
-<!-- Contact -->
-<section class="contact-section">
-   
-   
-</section>
-<!-- Architectural -->
+
+
+
+
+
+
+
+
+
 
 
 {% endblock %}
+

@@ -1,0 +1,118 @@
+{% extends 'layout/userindex.html' %}
+
+{% load static %}
+{% block headingblock %}
+
+<section class="hero-section">
+    <h2 class="hidden">Slider Section</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="rev_slider_wrapper">
+                    <div class="fullwidth_slider rev_slider" data-arrows="false" data-height="750">
+                        <ul>		
+                            <li data-transition="fade">			
+
+                                <img src="https://deerhomes.com/wp-content/uploads/2024/01/004-1.png" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+
+                                <div class="tp-caption WhiteTtl tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="-32" 
+                                    data-whitespace="nowrap"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-150px;opacity:0;s:1000;e:Power4.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1300"
+                                    data-responsive_offset="on">Deer Homes
+                                </div>
+                                
+                                <div class="tp-caption WhiteTtlp tp-resizeme" 
+                                    data-x="center" data-hoffset="0" 
+                                    data-y="middle" data-voffset="32" 
+                                    data-whitespace="pre"
+                                    data-transform_idle="o:1;"
+                                    data-transform_in="y:-100px;opacity:0;s:1000;e:Power2.easeOut;"
+                                    data-transform_out="opacity:0;s:500;s:500;"
+                                    data-start="1700" 
+                                    data-responsive_offset="on"> Interior Designer & Architecture Firm
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+{% block user %}
+
+
+
+    <section class="portfolio-section masonry">
+        <div class="isot-filters">
+            <ul class="clean-list">
+                <li><a {% if not cat_id %} class="current" {% endif %} href="{% url 'project' %}">All</a></li>
+                {% for category in categories%}
+                <li><a {% if cat_id == category.id|stringformat:"s" %} class="current" {% endif %} href="{% url 'project' %}?category={{ category.id }}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="isot-projects-wrapper" data-default-selection="*">
+            <div class="container">
+                <div class="row isotope">
+                   
+
+                    {% for project in projects%}
+                    <div class="col-md-3 col-xs-6 isotope-item buildings">
+                        <div class="portfolio-box-circle masonry">
+                            <div class="image">
+                                <a href="{% url 'project_detail' project.id %}">
+                                    <img src="https://livewp.site/html/bricks/img/portfolio-wall-1.jpg" alt="portfolio box">
+                                </a>
+                            </div>
+                            <h6 class="title"><a href="#">{{ project.name }}</a></h6>
+                            <ul class="categories clean-list">
+                                <li><a href="{% url 'project_detail' project.id %}">Construction</a></li>
+                                <li><a href="{% url 'project_detail' project.id %}">Interior Design</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

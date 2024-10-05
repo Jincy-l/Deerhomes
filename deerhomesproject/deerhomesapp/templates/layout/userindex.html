@@ -1,195 +1,342 @@
-
 {% load static %}
 <!DOCTYPE html>
-<html lang="zxx">
+<html>
 <head>
-    <title>DeerHomes</title>
-    <!-- /SEO Ultimate -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <meta charset="utf-8">
-    <link rel="apple-touch-icon" sizes="57x57" href="{% static  'userassets/images/favicon/apple-icon-57x57.png' %}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{% static  'userassets/images/favicon//apple-icon-60x60.png' %}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{% static  'userassets/images/favicon//apple-icon-72x72.png' %}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static  'userassets/images/favicon//apple-icon-76x76.png' %}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{% static  'userassets/images/favicon//apple-icon-114x114.png' %}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{% static  'userassets/images/favicon//apple-icon-120x120.png' %}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{% static  'userassets/images/favicon//apple-icon-144x144.png' %}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{% static  'userassets/images/favicon//apple-icon-152x152.png' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static  'userassets/images/favicon//apple-icon-180x180.png' %}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{% static  'userassets/images/favicon//android-icon-192x192.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static  'userassets/images/favicon//favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{% static  'userassets/images/favicon//favicon-96x96.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static  'userassets/images/favicon//favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static  'userassets/images/favicon//manifest.json' %}">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Latest compiled and minified CSS -->
-    <link href="{% static  'userassets/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{% static  'userassets/js/bootstrap.min.js' %}">
-    <!-- Font Awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <!-- StyleSheet link CSS -->
-    <link href="{% static  'userassets/css/style.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static  'userassets/css/custom-style.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static  'userassets/css/special-classes.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static  'userassets/css/responsive.css' %}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{% static  'userassets/css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static  'userassets/css/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    
+	<meta charset="utf-8" />
+    <title>Deer Homes</title>
+    <link rel="shortcut icon" href="{% static 'userassets/img/logo2.png' %}" type="image/x-icon" />
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static  'userassets/css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static  'userassets/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static  'userassets/css/screen.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static  'userassets/rs-plugin/css/settings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static  'userassets/rs-plugin/css/layers.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static  'userassets/rs-plugin/css/navigation.css' %}">		
 </head>
 <body>
-<!-- Header  -->
-<div class="banner_outer">
-    <figure class="banner-background mb-0">
-        <img src="{% static  'userassets/images/banner-background.jpg' %}" alt="" class="img-fluid">
-    </figure>
-    <header class="header">
-        <div class="main-header">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="{% url 'mainindex' %}"><figure class="mb-0 banner-logo"><img src="{% static  'userassets/images/deerhomes-logo.png' %}" alt="" class="img-fluid"></figure></a>
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
+	<style>
+		#headerLogo {
+			max-height: 140px !important;
+			max-width: 50% !important;
+		}
 
+	</style>
 
-                           
-
-                            <li class="nav-item  {% if request.path == '/' %} active {% endif %}">
-                                <a class="nav-link" href="/">Home</a>
-                            </li>
-                            <li class="nav-item {% if request.path == '/about' %} active {% endif %}">
-                                <a class="nav-link" href="{% url 'about' %}">About Us</a>
-                            </li>
-                            <li class="nav-item {% if request.path == '/service' %} active {% endif %}">
-                                <a class="nav-link" href="{% url 'service' %}">Services</a>
-                            </li>
-                            <li class="nav-item {% if request.path == '/project' %} active {% endif %}">
-                                <a class="nav-link" href="{% url 'project' %}">Projects</a>
-                            </li>
-                            <li class="nav-item {% if request.path == '/blog' %} active {% endif %}">
-                                <a class="nav-link" href="{% url 'blog' %}">Blogs</a>
-                            </li>                            
-                           
-                            <li class="nav-item {% if request.path == '/contact' %} active {% endif %}">
-                                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link get_a_quote" href="about">Get a Quote
-                                    <i class="dot fa-regular fa-circle-small"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+	<!-- Page Wrapper -->
+	<div id="page">
+		
+		<!-- Header -->
+		<header class="header-v3">
+			<div class="top-header">
+                <div class="container">
+                    <ul class="contacts">
+                        <li><i class="fa fa-phone"></i><a href="tel:+919496269082" target="_blank">+91 94962 69082</a></li>
+                        <li><a href="mailto:deerhomes@gmail.com"><i class="fa fa-envelope"></i>deerhomes@gmail.com</a></li>
+                    </ul>
+                
+                	<ul class="socials">                        
+                        <li><a href="https://wa.me/+919496269082?text=Hi"  target="_blank"><i class="fa fa-whatsapp"></i></a></li>                        
+                        <li><a href="https://www.facebook.com/deerhomes"  target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/deer-homes-kollam"  target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+                        <li><a href="https://www.instagram.com/deerhomeskollam"  target="_blank"><i class="fa fa-instagram"></i></a></li>
+                	</ul>
+                </div>
             </div>
-        </div>
-    </header>
-    <div class="social-icons position-relative">
-        <ul class="list-unstyled mb-0 position-absolute">
-            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-twitter social-networks"></i></a></li>
-            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-facebook-f social-networks"></i></a></li>
-            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-instagram social-networks"></i></a></li>
-            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-linkedin-in social-networks"></i></a></li>
-        </ul>
-    </div>
 
-    {% block headingblock %}
+            <div class="bottom-header">
+            	<div class="container">
+            		<span class="mobile-navigation-toggle hidden-md hidden-lg">
+						<span class="menui top-menu"></span>
+						<span class="menui mid-menu"></span>
+						<span class="menui bottom-menu"></span>
+					</span>
 
-    {% endblock %}
-    {% comment %} <section class="banner-section">
-        <figure class="banner-backgroundimage mb-0">
-            <img src="{% static  'userassets/images/banner-backgroundimage.jpg' %}" alt="" class="img-fluid">
-        </figure>
-        <div class="container-fluid">
-           
-                {% block headingblock %}
+            		<div class="logo">
+            			<a href="{% url 'mainindex' %}">  <img id="headerLogo" src="{% static 'userassets/img/logo2.png' %}"   alt="cart cover"> </a>
+            		</div>
+				   	
+				   	<nav class="main-nav">
+					    <ul class="menu">
+					        <li class="menu-item">
+					            <a href="{% url 'mainindex' %}">Home</a>
+					        </li>
+							<li class="menu-item">
+					            <a href="{% url 'about' %}">About</a>
+					        </li>
+							<li class="menu-item">
+					            <a href="{% url 'service' %}">Services</a>
+					        </li>							
+							<li class="menu-item">
+					            <a href="{% url 'project' %}">Projects</a>
+					        </li>							
+							<li class="menu-item">
+					            <a href="{% url 'blog' %}">Blogs</a>
+					        </li>							
+							<li class="menu-item">
+					            <a href="{% url 'contact' %}">Contact Us</a>
+					        </li>					    
+					    </ul>
+					</nav>
 
-                {% endblock %}
-    </section> {% endcomment %}
-</div>
-{% block user %}
+			   		
+            	</div>
+            </div>
+		</header>
+
+		<!-- Main Content -->
+		<div class="content-wrapper">
+			{% comment %} <section class="hero-section">
+				<h2 class="hidden">Slider Section</h2>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="rev_slider_wrapper">
+								<div class="fullwidth_slider rev_slider" data-height="750">
+									<ul>		
+										<li data-transition="fade">			
+
+											
+											<img src="https://deerhomes.com/wp-content/uploads/2024/01/004-1.png" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+
+											<!-- <img src="{% static 'https://deerhomes.com/wp-content/uploads/2024/08/Enscape_2024-07-31-13-18-261.jpg' %}" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina> -->
+
+											<div class="tp-caption WhiteTtl tp-resizeme" 
+												data-x="center" data-hoffset="0" 
+												data-y="middle" data-voffset="-50" 
+												data-whitespace="nowrap"
+												data-transform_idle="o:1;"
+	                                            data-transform_in="y:-150px;opacity:0;s:1000;e:Power4.easeOut;"
+	                                            data-transform_out="opacity:0;s:500;s:500;"
+	                                            data-start="1300"
+												data-responsive_offset="on">Construct your future
+											</div>
+											
+											<div class="tp-caption WhiteTtlp tp-resizeme" 
+												data-x="center" data-hoffset="0" 
+												data-y="middle" data-voffset="30" 
+												data-whitespace="pre"
+												data-transform_idle="o:1;"
+                                                data-transform_in="y:-100px;opacity:0;s:1000;e:Power2.easeOut;"
+												data-transform_out="opacity:0;s:500;s:500;"
+												data-start="1700" 
+												data-responsive_offset="on">As the general contructor, we first create the highest level of trust and integrity with our
+	                clients. We value our role in the success of your project.
+											</div>
+
+											<div class="tp-caption tp-resizeme" 
+												data-x="center" data-hoffset="0" 
+												data-y="middle" data-voffset="92"
+												data-transform_idle="o:1;"
+                                                data-transform_in="y:100px;opacity:0;s:1000;e:Power4.easeOut;"
+                                                data-transform_out="y:0;opacity:0;s:300;e:Power4.easeIn;"
+                                                data-start="2000"
+												data-responsive_offset="on" 
+												><a class="btn yellow medium" href="#">view more</a>
+											</div>
+											
+										</li>
+										<li data-transition="fade">	
+											<img src="https://deerhomes.com/wp-content/uploads/2024/01/20221104_152732-scaled.jpeg" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+
+											
+											<!-- <img src="{% static 'https://deerhomes.com/wp-content/uploads/2024/08/elevation1-scaled.jpg' %}" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina> -->
+
+											<div class="tp-caption WhiteTtl tp-resizeme" 
+												data-x="center" data-hoffset="0" 
+												data-y="middle" data-voffset="-50" 
+												data-whitespace="nowrap"
+												data-transform_idle="o:1;"
+	                                            data-transform_in="y:-150px;opacity:0;s:1000;e:Power4.easeOut;"
+	                                            data-transform_out="opacity:0;s:500;s:500;"
+	                                            data-start="1300"
+												data-responsive_offset="on">Construct your future
+											</div>
+											
+											<div class="tp-caption WhiteTtlp tp-resizeme" 
+												data-x="center" data-hoffset="0" 
+												data-y="middle" data-voffset="30" 
+												data-whitespace="pre"
+												data-transform_idle="o:1;"
+                                                data-transform_in="y:-100px;opacity:0;s:1000;e:Power2.easeOut;"
+												data-transform_out="opacity:0;s:500;s:500;"
+												data-start="1700" 
+												data-responsive_offset="on">As the general contructor, we first create the highest level of trust and integrity with our
+	                clients. We value our role in the success of your project.
+											</div>
+
+											<div class="tp-caption tp-resizeme" 
+												data-x="center" data-hoffset="0" 
+												data-y="middle" data-voffset="92"
+												data-transform_idle="o:1;"
+                                                data-transform_in="y:100px;opacity:0;s:1000;e:Power4.easeOut;"
+                                                data-transform_out="y:0;opacity:0;s:300;e:Power4.easeIn;"
+                                                data-start="2000"
+												data-responsive_offset="on" 
+												><a class="btn yellow medium" href="#">view more</a>
+											</div>
+											
+										</li>
+										<li data-transition="fade">			
+											
+											<img src="https://deerhomes.com/wp-content/uploads/2024/01/eet.jpeg" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+
+											<!-- <img src="{% static 'https://deerhomes.com/wp-content/uploads/2024/08/R11-scaled.jpg' %}" alt="slide1" data-bgfit="cover" data-bgposition="center center" data-kenburns="on" data-duration="7000" data-ease="Linear.easeNone" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina> -->
+
+											<div class="tp-caption WhiteTtl tp-resizeme" 
+												data-x="center" data-hoffset="0" 
+												data-y="middle" data-voffset="-50" 
+												data-whitespace="nowrap"
+												data-transform_idle="o:1;"
+	                                            data-transform_in="y:-150px;opacity:0;s:1000;e:Power4.easeOut;"
+	                                            data-transform_out="opacity:0;s:500;s:500;"
+	                                            data-start="1300"
+												data-responsive_offset="on">Construct your future
+											</div>
+											
+											<div class="tp-caption WhiteTtlp tp-resizeme" 
+												data-x="center" data-hoffset="0" 
+												data-y="middle" data-voffset="30" 
+												data-whitespace="pre"
+												data-transform_idle="o:1;"
+                                                data-transform_in="y:-100px;opacity:0;s:1000;e:Power2.easeOut;"
+												data-transform_out="opacity:0;s:500;s:500;"
+												data-start="1700" 
+												data-responsive_offset="on">As the general contructor, we first create the highest level of trust and integrity with our
+	                clients. We value our role in the success of your project.
+											</div>
+
+											<div class="tp-caption tp-resizeme" 
+												data-x="center" data-hoffset="0" 
+												data-y="middle" data-voffset="92"
+												data-transform_idle="o:1;"
+                                                data-transform_in="y:100px;opacity:0;s:1000;e:Power4.easeOut;"
+                                                data-transform_out="y:0;opacity:0;s:300;e:Power4.easeIn;"
+                                                data-start="2000"
+												data-responsive_offset="on" 
+												><a class="btn yellow medium" href="#">view more</a>
+											</div>
+											
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section> {% endcomment %}
+
+
+            
+{% block headingblock %}
 
 {% endblock %}
+            {% block user %}
 
-<!-- Footer -->
-<section class="footer-section">
-    <figure class="left-lamp mb-0">
-        <img src="{% static  'userassets/images/left-lamp.png' %}" alt="" class="img-fluid">
-    </figure>
-    <figure class="right-lamp mb-0">
-        <img src="{% static  'userassets/images/right-lamp.png' %}" alt="" class="img-fluid">
-    </figure>
-    <div class="container">
-        <div class="middle-portion">
-            <div class="row">
-                <div class="col-12">
-                    <div class="logo-part">
-                        <a href="{% url 'mainindex' %}"><figure class="footer-logo"><img src="{% static  'userassets/images/footer-logo.png' %}" alt=""></figure></a>
-                        <h6>Sign-up to get the latest offers and news and stay updated.</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <form action="mainindex"method="POST">
-                        {% csrf_token %}
-                        <div class="form-row">
-                            <div class="col-12 d-sm-block d-none">
-                                <input type="email" name="email" id="emailadd" class="form-control upper_layer" placeholder="Your Email Address">
-                                <div class="input-group-append form-button">
-                                    
-                                    <button class="btn subscribe_now" name="btnsubmit" id="submitbtn" type="submit">Subscribe
-                                        <i class="dot fa-solid fa-circle-small"></i>
-                                    </button>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-        </div>
-        <div class="footer-lower">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-md-block d-none">
-                    <div class="social-icons position-relative">
-                        <ul class="list-unstyled mb-0 position-absolute">
-                            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-twitter social-networks"></i></a></li>
-                            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-facebook-f social-networks"></i></a></li>
-                            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-instagram social-networks"></i></a></li>
-                            <li><a href="static/#" class="text-decoration-none"><i class="fa-brands fa-linkedin-in social-networks"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                    <p class="mb-0 text-size-14">©2024 DeerHomes, All Rights Reserved. </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Latest compiled JavaScript -->
-<script src="{% static  'userassets/js/jquery-3.6.0.min.js' %}"> </script>
-<script src="{% static  'userassets/js/bootstrap.min.js' %}"> </script>
-<script src="{% static  'userassets/js/video_link.js' %}"></script>
-<script src="{% static  'userassets/js/video.js' %}"></script>
-<script src="{% static  'userassets/js/counter.js' %}"></script>
-<script src="{% static  'userassets/js/owl.carousel.js' %}"></script>
-<script src="{% static  'userassets/js/custom-carousel.js' %}"></script>
-<script src="{% static  'userassets/js/custom.js' %}"></script>
-<script src="{% static  'userassets/js/animation_links.js' %}"></script>
-<script src="{% static  'userassets/js/animation.js' %}"></script>
+            {% endblock %}
+
+			
+		</div>
+
+		{% comment %} <a href="https://wa.me/+919496269082?text=Hi"  class="floating-button" target="_blank">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+		</a> {% endcomment %}
+	
+		<!-- Footer -->
+		<footer>
+			<div class="top-footer">
+				<div class="container">
+					<div class="row isotope">
+						<div class="col-md-3 col-sm-6 col-xs-12 isotope-item">
+							<div class="widget widget_contact">
+	                            <h4 class="widget-title">Contact Info</h4>
+	                            <div class="widget-body">
+	                            	<ul class="contact-info clean-list">
+	                            		<li>
+	                            			<span class="title">Address:</span>
+
+											
+											<a href="https://maps.app.goo.gl/mriC6uPrRSJu5Z9f7" target="_blank">
+
+												<p>Uliyakovil East, Kollam,</p>
+												<p>Kerala 691008</p>
+											</a>
+	                            		</li>
+	                            		<li>
+	                            			<span class="title">Phone:</span>
+											<p><a href="tel:+919496269082" target="_blank">+91 94962 69082</a></p>
+
+	                            		</li>
+	                            		<li>
+	                            			<span class="title">Email:</span>
+		                            		<p><a href="mailto:deerhomes@gmail.com">deerhomes@gmail.com</a></p>
+	                            		</li>
+	                            	</ul>
+	                            </div>
+	                        </div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 isotope-item">
+						</div>
+
+						<div class="col-md-3 col-sm-6 col-xs-12 isotope-item">
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 isotope-item">
+							<div class="widget widget_contact">
+	                            <h4 class="widget-title">Follow Us</h4>
+								<div class="widget-body">
+	                            	<ul class="contact-info clean-list">
+	                            		<li>
+											<ul class="socials clean-list">             
+                                                <li><a href="https://wa.me/+919496269082?text=Hi"  target="_blank"><i class="fa fa-whatsapp"></i></a></li>                        
+                                                <li><a href="https://www.facebook.com/deerhomes"  target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                                                <li><a href="https://www.linkedin.com/company/deer-homes-kollam"  target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+                                                <li><a href="https://www.instagram.com/deerhomeskollam"  target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                            </ul>
+	                            		</li>
+	                            	</ul>
+	                            </div>
+	                        </div>
+						</div> 
+					</div>
+				</div>
+			</div>
+
+			<div class="bottom-footer">
+				<div class="container">
+					<p class="alignleft align-left copyright">
+						Copyright © 2024 Deer Homes. All Rights Reserved.
+					</p>
+
+					<p class="alignright align-right copyright">
+						by <a href="https://kleemgotbay.com/">kleemgotbay.com</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<!-- Scripts -->
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script type="text/javascript" src="{% static 'userassets/js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/js/modernizr.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/js/nouislider.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/jquery.themepunch.tools.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>
+	<!-- rs-plugin extensions -->
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/extensions/revolution.extension.video.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/extensions/revolution.extension.actions.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/extensions/revolution.extension.migration.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/rs-plugin/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+	<!-- //rs-plugin extensions -->
+	<script type="text/javascript" src="{% static 'userassets/js/imagesloaded.pkgd.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/js/jquery.magnific-popup.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/js/isotope.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/js/slick.js' %}"></script>
+	<script type="text/javascript" src="{% static 'userassets/js/options.js' %}"></script>
 </body>
 </html>
