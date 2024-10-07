@@ -192,6 +192,36 @@ body {
   color: #fff !important;
 }
 
+.btn.blue
+{
+  background: #048aff;
+  border-color: #048aff;
+  color: #000000;
+}
+
+
+.portfolio-section.bg {
+  background: url(../img/cover-1.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.clients-section.bg {
+  background: url(../img/cover-3.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.heading-white {
+  color: #fefefe;
+}
+.heading-black {
+  color: #000000;
+}
+
+
+
 /* ///////////////////////////////////// */
 
 input[type="number"],
