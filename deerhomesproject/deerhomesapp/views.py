@@ -8,18 +8,23 @@ def userindex(request):
     projects = projectss.objects.all() #.order_by('-created_at')[:4]
     
     Categories = Category.objects.all()
+    blog=tbl_blogs.objects.all() 
     context = {
         "projects" : projects,
-        "categories" : Categories
+        "categories" : Categories,
+        "blog":blog,
+        
     }
     return render(request,'main/userindex.html',context)
 def mainindex(request): 
     projects = projectss.objects.all().order_by('-created_at')[:4]
     
     Categories = Category.objects.all()
+    blog=tbl_blogs.objects.all().order_by('-created_at')[:4]
     context = {
         "projects" : projects,
-        "categories" : Categories
+        "categories" : Categories,
+        "blog":blog
     }
     return render(request,'mainindex.html',context)
 def about(request):

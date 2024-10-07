@@ -70,16 +70,32 @@
 								{% endif %}
 					        </li>
 							<li class="menu-item">
+								{% if request.path == '/' %} 
+								<a href="#service">Service</a>								 
+								{% else %}
 					            <a href="{% url 'service' %}">Services</a>
+								{% endif %}
 					        </li>							
 							<li class="menu-item">
+								{% if request.path == '/' %} 
+								<a href="#project">Projects</a>								 
+								{% else %}
 					            <a href="{% url 'project' %}">Projects</a>
+								{% endif %}
 					        </li>							
 							<li class="menu-item">
+								{% if request.path == '/' %} 
+								<a href="#blogs">Blogs</a>								 
+								{% else %}
 					            <a href="{% url 'blog' %}">Blogs</a>
+								{% endif %}
 					        </li>							
 							<li class="menu-item">
+								{% if request.path == '/' %} 
+								<a href="#contact">Contact Us</a>
+								{% else %}
 					            <a href="{% url 'contact' %}">Contact Us</a>
+								{% endif %}
 					        </li>					    
 					    </ul>
 					</nav>

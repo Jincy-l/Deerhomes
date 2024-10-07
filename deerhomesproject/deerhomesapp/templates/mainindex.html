@@ -138,7 +138,7 @@
 
 
 {% block user %}
-    <section class="portfolio-section v3">
+    <section class="portfolio-section v3" id="project">
         <div class="container">
             <div class="section-header">
                 <h5 class="subtitle">Our Portfolio</h5>
@@ -173,6 +173,107 @@
             </div>
         </div>
     </section>
+
+   
+    <section class="portfolio-section v3">
+        <div class="container">
+            <div class="section-header">
+                <h2> Our Categories</h2>
+            </div>
+
+            <div class="row">
+                {% comment %} {% for project in projects%} {% endcomment %}
+                <div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item item-cyan position-relative">
+                        <div class="icon">
+                            <img src="{% static 'userassets/img/new11.jpg' %}" alt="Residential Design" class="img-fluid" style="width: 400px; height: 300px;">
+                        </div>
+                        <a href="#" class="stretched-link">
+                            <h3>Residential Design</h3>
+                        </a>
+                        <p>Transform your living space into a sanctuary. Our residential design services focus on creating personalized environments that reflect your style.</p>
+                    
+                        <a class="btn yellow medium btn-viewmore" href="{% url 'project' %}">view more</a>
+                        <a class="btn yellow medium btn-viewmore" href="https://wa.me/+919496269082?text=Hi">chat us</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item item-cyan position-relative">
+                        <div class="icon">
+                            <img src="{% static 'userassets/img/new22.jpg' %}" alt="Interior Design" class="img-fluid" style="width: 400px; height: 300px;">
+                        </div>
+                        <a href="#" class="stretched-link">
+                            <h3>Interior Design</h3>
+                        </a>
+                        <p>Elevate your interiors with our expert design solutions. We specialize in creating functional and aesthetically pleasing spaces tailored to your lifestyle.</p>
+                    
+                        <a class="btn yellow medium btn-viewmore" href="{% url 'project' %}">view more</a>
+                        <a class="btn yellow medium btn-viewmore" href="https://wa.me/+919496269082?text=Hi">chat us</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item item-cyan position-relative">
+
+                    
+                        <div class="icon">
+                            <img src="{% static 'userassets/img/new33.jpg' %}" alt="Commercial Design" class="img-fluid" style="width: 400px; height: 300px;">
+                        </div>
+                        <a href="#" class="stretched-link">
+                            <h3>Commercial Design</h3>
+                        </a>
+                        <p>Maximize your business potential with our innovative commercial design services. We create spaces that enhance productivity and leave a lasting impression.</p>
+                    
+                        <a class="btn yellow medium btn-viewmore" href="{% url 'project' %}">view more</a>
+                        <a class="btn yellow medium btn-viewmore" href="https://wa.me/+919496269082?text=Hi">chat us</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item item-cyan position-relative">
+                        <div class="icon">
+                            <img src="{% static 'userassets/img/new11.jpg' %}" alt="Residential Design" class="img-fluid" style="width: 400px; height: 300px;">
+                        </div>
+                        <a href="#" class="stretched-link">
+                            <h3>Residential Design</h3>
+                        </a>
+                        <p>Transform your living space into a sanctuary. Our residential design services focus on creating personalized environments that reflect your style and needs.</p>
+                    
+                        <a class="btn yellow medium btn-viewmore" href="{% url 'project' %}">view more</a>
+                        <a class="btn yellow medium btn-viewmore" href="https://wa.me/+919496269082?text=Hi">chat us</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item item-cyan position-relative">
+                        <div class="icon">
+                            <img src="{% static 'userassets/img/new11.jpg' %}" alt="Residential Design" class="img-fluid" style="width: 400px; height: 300px;">
+                        </div>
+                        <a href="#" class="stretched-link">
+                            <h3>Residential Design</h3>
+                        </a>
+                        <p>Transform your living space into a sanctuary. Our residential design services focus on creating personalized environments that reflect your style and needs.</p>
+                    
+                        <a class="btn yellow medium btn-viewmore" href="{% url 'project' %}">view more</a>
+                        <a class="btn yellow medium btn-viewmore" href="https://wa.me/+919496269082?text=Hi">chat us</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item item-cyan position-relative">
+                        <div class="icon">
+                            <img src="{% static 'userassets/img/new11.jpg' %}" alt="Residential Design" class="img-fluid" style="width: 400px; height: 300px;">
+                        </div>
+                        <a href="#" class="stretched-link">
+                            <h3>Residential Design</h3>
+                        </a>
+                        <p>Transform your living space into a sanctuary. Our residential design services focus on creating personalized environments that reflect your style and needs.</p>
+                    
+                        <a class="btn yellow medium btn-viewmore" href="{% url 'project' %}">view more</a>
+                        <a class="btn yellow medium btn-viewmore" href="https://wa.me/+919496269082?text=Hi">chat us</a>
+                    </div>
+                </div>
+                {% comment %} {% endfor %} {% endcomment %}
+            </div>
+        </div>
+    </section>
+
     <section class="features-section v2" id="about">
         <div class="container-fluid">
             <div class="row bg-alfa pos-relative">
@@ -198,10 +299,37 @@
         </div>
     </section>    
    
-  
+    <section class="portfolio-section v3" id="blogs">
+        <div class="container">
+            <div class="section-header">
+                <h2>  Blogs</h2>
+            </div>
+
+            <div class="row">
+                
+                {% for blog in blog %}
+                <div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item item-cyan position-relative">
+                        <div class="icon">
+                            <img src="{% static 'userassets/img/new11.jpg' %}" alt="Residential Design" class="img-fluid" style="width: 400px; height: 300px;">
+                        </div>
+                        <a href="#" class="stretched-link">
+                            <h3 class="post-title"><a href="{% url 'blog_detail' blog.id %}">{{blog.name|truncatewords:4}}</a></h3>
+                        </a>
+                        <p>{{ blog.description|slice:":100" }}{% if blog.description|length > 100 %}...{% endif %}</p>
+                    
+                        <a class="btn yellow medium btn-viewmore" href="{% url 'blog' %}">view more</a>
+                        <a class="btn yellow medium btn-viewmore" href="https://wa.me/+919496269082?text=Hi">chat us</a>
+                      
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </section>
 
    <!-- Section Title -->
-<div>
+{% comment %} <div>
     <center><h2>Our Categories</h2></center>
 </div><!-- End Section Title -->
 
@@ -239,7 +367,7 @@
         </a>
         <p>Maximize your business potential with our innovative commercial design services. We create spaces that enhance productivity and leave a lasting impression.</p>
     </div>
-</div><!-- End Service Item -->
+</div><!-- End Service Item --> {% endcomment %}
 
 <style>
     /* General Styles */
@@ -536,7 +664,7 @@
         </div>
     </section>
 
-    <section class="features-section v2">
+    <section class="features-section v2" id="service">
         <div class="container-fluid">
             <div class="row bg-alfa pos-relative">
                 <div class="col-md-6 no-padding pos-static">
@@ -548,7 +676,7 @@
                 <div class="col-md-6">
                     <div class="section-header">
                         <h5 class="subtitle">What Makes Us Different</h5>
-                        <h2>Our Work & Our People</h2>
+                        <h2>Our Services</h2>
                         <span><i></i></span>
                         <p>
                             Deerhomes customer engagements revolve around four core values Design to Suit: We believe every home is unique. A deep understanding of the surrounding environment and the requirements of the people who live in the house are the mainstays of our design philosophy. Our designs that draw inspiration from the contemporary and the traditional methodologies are appreciated by clients for its blend of functional optimization and aesthetics.
@@ -571,7 +699,10 @@
                                 <a href="https://www.youtube.com/watch?v=6v2L2UGZJAM" class="video-link"></a>
                             </div>
                         </div>
+            
                     </div>
+                    <a class="btn yellow medium btn-viewmore" href="{% url 'service' %}">view more</a>
+                    <a class="btn yellow medium btn-viewmore" href="https://wa.me/+919496269082?text=Hi">chat us</a>  
                 </div>
             </div>
         </div>
@@ -628,7 +759,7 @@
         </div>
     </section>
 
-    <section class="clients-section v2">
+    <section class="clients-section v2" id="contact">
         <div class="container">
             <div class="row clients-list">
                 <div class="col-md-2 col-xs-4">
