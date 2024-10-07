@@ -53,14 +53,21 @@
             <div class="col-md-9 col-content">
                 <div class="blog-posts-list single">
                     <div class="blog-post">
-                        <div class="slick-carousel gallery" data-breakpoint="0" data-fade="true" data-arrows="false" data-speed="2000" data-dots="true" data-infinite="true" data-items-desktop="1">	
-                            <ul class="clean-list carousel-items">
-                                <li class="carousel-item">
-                                    <img src="\media\blogimages\{{blog.blog_image }}" alt="blog post">
-                                </li>
-                            </ul>
-                        </div>
-
+                        {% if blog.blog_image %}
+                            <div class="slick-carousel gallery" data-breakpoint="0" data-fade="true" data-arrows="false" data-speed="2000" data-dots="true" data-infinite="true" data-items-desktop="1">	
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <ul class="clean-list carousel-items">
+                                        <li class="carousel-item">
+                                            <img src="{{ MEDIA_URL }}blogimages/{{ blog.blog_image }}" alt="blog2 post">
+                                        </li>
+                                    </ul>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                                </div>
+                            </div>
+                        {% endif %}
                         <h2 class="post-title">{{blog.name}}</h2>
 
                         <ul class="post-meta clean-list">
@@ -70,7 +77,57 @@
                         <div class="entry">
                             <p>{{blog.description}}</p>
                         </div>
+                        {% if sub_blogs %}
+                            {% for sub_blog in sub_blogs %}
+                                <div class="sub-content-section">
+                                    <!-- Key Insights Section -->
+                                    <div class="sub-content">
+                                        <h3 class="subtitle"><strong>{{ sub_blog.sub_title }}</strong></h3>
+                                        <div class="insight-card">
+                                            <i class="icon-insight"></i>
+                                            <p>{{ sub_blog.sub_title_content }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
 
+<style>
+.sub-content-section {
+    margin-top: 20px;
+}
+
+.sub-content {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.insight-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.icon-insight {
+    font-size: 24px; /* Use an icon font or image here */
+    margin-right: 10px;
+}
+
+.resource-list, .discussion-list {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+</style>
                         <div class="post-footer">
                             <div class="tags">
                                 <a class="custom-link" href="#">concepts</a>
@@ -89,20 +146,22 @@
 
                             <div class="row">
 
-                                {% for blog in recent_blogs %}                               
-                                    <div class="col-md-4">
-                                        <div class="blog-post-item">
-                                            <div class="rel-cover">
-                                                <a href="{% url 'blog_detail' blog.id %}">
-                                                    <img class="aligncenter" src="\media\blogimages\{{blog.blog_image }}" alt="blog item">
-                                                </a>
+                                {% for recent_blog in recent_blogs %}
+                                    {% if recent_blog.id != blog.id %}
+                                        <div class="col-md-4">
+                                            <div class="blog-post-item">
+                                                <div class="rel-cover">
+                                                    <a href="{% url 'blog_detail' recent_blog.id %}">
+                                                        <img class="aligncenter" src="{{ MEDIA_URL }}blogimages/{{recent_blog.blog_image }}" alt="blog item">
+                                                    </a>
+                                                </div>
+                                                <h5 class="title"><a href="{% url 'blog_detail' recent_blog.id %}">{{recent_blog.name}}</a></h5>
+                                                <ul class="post-meta clean-list">
+                                                    <li>{{recent_blog.created_at}}</li>
+                                                </ul>
                                             </div>
-                                            <h5 class="title"><a href="{% url 'blog_detail' blog.id %}">{{blog.name}}</a></h5>
-                                            <ul class="post-meta clean-list">
-                                                <li>{{blog.created_at}}</li>
-                                            </ul>
                                         </div>
-                                    </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>

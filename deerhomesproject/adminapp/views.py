@@ -6,7 +6,6 @@ from django.core.files.storage import FileSystemStorage
 import hashlib
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
-from django.contrib.auth import authenticate
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -16,10 +15,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.http import HttpResponse
-
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
 import os  
 from django.db import transaction
 from django.utils.text import slugify
@@ -28,17 +24,10 @@ def loginpage(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-      
-        # print(email)
-        # print(password)
         # Authenticate user using Django's built-in authentication
-        
-        # auth = authenticate(request, email=email, password=password)
         auth = log.objects.filter(email=email).first()
-        
         # auth.password=hash_password(password)
         # auth.save()
-            
         # print(auth.email)
         if auth is not None:
             if validate_password(password, auth.password):
@@ -61,23 +50,11 @@ def loginpage(request):
             return render(request, 'main/loginpage.html', {'message': message})
     
     return render(request, 'main/loginpage.html')
-
-
 def hash_password(raw_password):
     return make_password(raw_password)
-
-
 def validate_password(raw_password, hashed_password):
     return check_password(raw_password, hashed_password)
 
-   
-
-
-
-    
-    
-    
-  
 def dashboard(request):
     project=projectss.objects.all()
     totalprojects=len(project)
@@ -97,7 +74,6 @@ def dashboard(request):
     return render(request,'dashboard.html',context)
 def projectcreate(request):
     categories = Category.objects.all()
-   
     if request.method =="POST":
         try:
             with transaction.atomic(): 
@@ -293,7 +269,7 @@ def blogView(request, id):
     return render(request,'blog/createblogs.html',context)
 def blogEdit(request, id):
     blog = get_object_or_404(tbl_blogs, id=id)
-     
+    sub_blog = tbl_blog_sub.objects.filter(blog_id_id = id).all()
     if request.method =="POST":
         try:
             with transaction.atomic():  
@@ -324,22 +300,64 @@ def blogEdit(request, id):
                 blog. blog_image=image     
                 blog.save()
                 
-                if blog:
-                        for subtitle, sub_content in zip(subtitles, sub_contents):
-                            if subtitle and sub_content: 
-                                tbl_blog_sub.objects.create(blog_id=blog, sub_title=subtitle, sub_title_content=sub_content)
-                                # tbl_blog_sub(
-                                #             blog_id=new_blog, 
-                                #             sub_title=subtitle,
-                                #             sub_title_content=sub_content
-                                #         ).save()     
+    #             if blog:
+    #                 for subtitle, sub_content in zip(subtitles, sub_contents):
+    #                     # if subtitle and sub_content: 
+    #                     #     tbl_blog_sub.objects.create(blog_id=blog, sub_title=subtitle, sub_title_content=sub_content)
+    #                     if subtitle and sub_content:
+    #                         try:
+    #                             # Update the record where blog_id matches and the current subtitle matches
+    #                             tbl_blog_sub.objects.filter(blog_id=blog).update(
+    #                                 sub_title=subtitle,
+    #                                 sub_title_content=sub_content
+    #                             )
+    #                         # tbl_blog_sub(
+    #                         #             blog_id=new_blog, 
+    #                         #             sub_title=subtitle,
+    #                         #             sub_title_content=sub_content
+    #                         #         ).save()     
+    #     except Exception as e:
+    #         messages.error(request, f"An error occurred: {str(e)}")
+    #         return redirect(request.META.get('HTTP_REFERER', '/'))        
+    # context={
+    #     'edit':True,
+    #     'blog':blog,
+    #     'sub_blogs':sub_blog,
+        
+    # }
+    # Update or create subtitles and contents
+                existing_subtitles = {record.sub_title: record for record in sub_blog}
+                processed_subtitles = set()
+
+                for subtitle, sub_content in zip(subtitles, sub_contents):
+                    if subtitle and sub_content:
+                        if subtitle in existing_subtitles:
+                            # Update existing record
+                            existing_subtitles[subtitle].sub_title_content = sub_content
+                            existing_subtitles[subtitle].save()
+                        else:
+                            # Create new record
+                            tbl_blog_sub.objects.create(blog_id=blog, sub_title=subtitle, sub_title_content=sub_content)
+                        processed_subtitles.add(subtitle)
+
+                # Delete any subtitles that were not processed (i.e., deleted)
+                for subtitle in existing_subtitles.keys():
+                    if subtitle not in processed_subtitles:
+                        existing_subtitles[subtitle].delete()
+
         except Exception as e:
             messages.error(request, f"An error occurred: {str(e)}")
-            return redirect(request.META.get('HTTP_REFERER', '/'))        
-    context={
-        'edit':True,
-        'blog':blog,
-        
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+        context = {
+        'edit': True,
+        'blog': blog,
+        'sub_blogs': sub_blog,
+        }
+        return redirect('blogEdit', id)
+    context = {
+        'edit': True,
+        'blog': blog,
+        'sub_blogs': sub_blog,
     }
     return render(request,'blog/createblogs.html',context)
 
@@ -351,7 +369,7 @@ def blogDelete(request, id):
 def blogss(request):
     blog = tbl_blogs.objects.all()
     context={
-        'blog':blog
+        'blogs':blog
     }
     return render(request,'blog/blogss.html',context)
  

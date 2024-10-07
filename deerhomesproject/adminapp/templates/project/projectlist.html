@@ -48,7 +48,7 @@
                                                 <td>{{project.amount}}</td>
                                                 <td>{{project.description|truncatewords:5}}</td>
                                                 <td>{{project.location}}</td>
-                                                <td><img src="/media/projectimages/{{project.image}}" style="width:130px"></td>
+                                                <td><img src="{{ MEDIA_URL }}projectimages/{{project.image}}" style="width:130px"></td>
                                                 <td>
                                                     <a href="{% url 'projectview' id=project.id %}">
                                                         <button class="btn btn-info btn-sm">

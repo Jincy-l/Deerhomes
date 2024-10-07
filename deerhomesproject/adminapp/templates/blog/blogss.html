@@ -42,7 +42,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for blog in blog %}
+                                            {% for blog in blogs %}
                                             <tr>
                                                 <td>{{ forloop.counter }}</td> 
                                                 <td>{{blog.name}}</td>
@@ -50,7 +50,7 @@
                                                 <td>{{blog.metatag}}</td>
                                                 <td>{{blog.metakeyword}}</td>
                                                 <td>{{blog.metadescription}}</td>
-                                                <td><img src="/media/blogimages/{{blog.blog_image}}" style="width:130px"></td>
+                                                <td><img src="{{ MEDIA_URL }}blogimages/{{blog.blog_image}}" style="width:130px"></td>
                                                 <td>
                                                     <a href="{% url 'blogView' id=blog.id %}">
                                                         <button class="btn btn-info btn-sm">

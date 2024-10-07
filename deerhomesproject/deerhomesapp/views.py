@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from . models import *
 from .models import login,projectss,tbl_blogs,tbl_sub_image
-get_object_or_404
 # Create your views here.
 def userindex(request):
     
@@ -102,6 +101,7 @@ def blog(request):
 def blog_detail(request,id):
     blog = get_object_or_404(tbl_blogs, id=id)   
     Categories = Category.objects.all()
+    sub_blogs = tbl_blog_sub.objects.filter(blog_id_id=id).all()
     # context = {
     #         "blog" : blog,
     #         "categories" : Categories,
@@ -112,6 +112,7 @@ def blog_detail(request,id):
  
     context = {
         "blog": blog,
+        "sub_blogs": sub_blogs,
         "categories" : Categories,
         "recent_blogs" : recent_blogs,
         "recent_projects" : recent_projects

@@ -70,7 +70,7 @@
                         <div class="portfolio-box-circle masonry">
                             <div class="image">
                                 <a href="{% url 'project_detail' project.id %}">
-                                    <img src="/media/projectimages/{{ project.image }}" alt="portfolio box">
+                                    <img src="{{ MEDIA_URL }}projectimages/{{ project.image }}" alt="portfolio box">
 
                                 </a>
                             </div>

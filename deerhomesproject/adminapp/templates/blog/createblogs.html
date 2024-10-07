@@ -56,19 +56,40 @@
                                             <label>MetaDescription</label>
                                             <input type="text" name="metaDescription" class="form-control" placeholder="MetaDescription" value="{{ blog.metadescription }}" {% if view %} readonly {% endif %}>
                                         </div> 
-                                        
-                                        <div class="form-group-append">
-                                        <div class="form-group-append-sub">
-                                        <div class="form-group">
-                                            <label>Subtitle Name</label>
-                                            <input type="text" id="subtitleName" name="subtitlename[]" class="form-control" placeholder="MetaDescription" value="{{ blog.metadescription }}" {% if view %} readonly {% endif %}>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Subtitle Content</label>
-                                            <input type="text" id="subtitleContent" name="subtitlecontent[]" class="form-control" placeholder="MetaDescription" value="{{ blog.metadescription }}" {% if view %} readonly {% endif %}>
-                                        </div>
-                                        </div>
-                                        </div>
+                                        {% if sub_blogs %}
+                                            <div class="form-group-append">
+                                                {% for sub_blog in sub_blogs %}
+                                                    <div class="form-group-append-sub">
+                                                        <div class="form-group">
+                                                            <!--<label>Subtitle Name {{ forloop.counter }}</label>-->
+                                                            <label>Subtitle Name 
+                                                                 <button type="button" class="btn btn-danger removeButton">
+                                                                  <i class="fas fa-trash-alt"></i> 
+                                                                 </button>
+                                                            </label>
+                                                            <input type="text" id="subtitleName" name="subtitlename[]" class="form-control" placeholder="MetaDescription" value="{{ sub_blog.sub_title }}" {% if view %} readonly {% endif %}>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Subtitle Content {{ forloop.counter }}</label>
+                                                            <input type="text" id="subtitleContent" name="subtitlecontent[]" class="form-control" placeholder="MetaDescription" value="{{ sub_blog.sub_title_content }}" {% if view %} readonly {% endif %}>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            <div class="form-group-append">
+                                                <div class="form-group-append-sub">
+                                                    <div class="form-group">
+                                                        <label>Subtitle Name {{ forloop.counter }}</label>
+                                                        <input type="text" id="subtitleName" name="subtitlename[]" class="form-control" placeholder="MetaDescription" value="{{ sub_blog.sub_title }}" {% if view %} readonly {% endif %}>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Subtitle Content {{ forloop.counter }}</label>
+                                                        <input type="text" id="subtitleContent" name="subtitlecontent[]" class="form-control" placeholder="MetaDescription" value="{{ sub_blog.sub_title_content }}" {% if view %} readonly {% endif %}>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
                                         <button type="button" id="appendButton" class="btn btn-primary">
                                             <i class="fas fa-plus"></i> 
                                         </button>
@@ -102,7 +123,7 @@
                                         </script>
                                    
                                         {% if blog.blog_image %} 
-                                        <img src="/media/blogimages/{{ blog.blog_image }}" alt="Blog Image" height="100px" width="100px">
+                                        <img src="{{ MEDIA_URL }}blogimages/{{ blog.blog_image }}" alt="Blog Image" height="100px" width="100px">
                                          {% endif %} 
 
                                          {% if edit %} 

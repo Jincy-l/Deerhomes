@@ -59,18 +59,26 @@
                     {% for blog in blogs %}
                     <div class="blog-post">
                         <div class="item-cover">
-                            <a href="{% url 'blog_detail' blog.id %}">
-                                <img src="/media/blogimages/{{blog.blog_image }}" alt="blog post">
+                            <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <a href="{% url 'blog_detail' blog.id %}">
+                                <img src="{{ MEDIA_URL }}blogimages/{{blog.blog_image }}" alt="blog post">
                             </a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                                </div>
+                            
                         </div>
 
-                        <h2 class="post-title"><a href="{% url 'blog_detail' blog.id %}">{{blog.name}}</a></h2>
+                        <h2 class="post-title"><a href="{% url 'blog_detail' blog.id %}">{{blog.name|truncatewords:4}}</a></h2>
 
                         <ul class="post-meta clean-list">
                             <li>{{blog.created_at}}</li>
                         </ul>
-
-                        <p class="description">{{ blog.description|slice:":100" }}{% if blog.description|length > 100 %}...{% endif %}</p>
+                        <div class="p-4">
+                            <p class="description">{{ blog.description|slice:":100" }}{% if blog.description|length > 100 %}...{% endif %}</p>
+                        </div>
                         <a class="btn grey" href="{% url 'blog_detail' blog.id %}">read more</a>                      
                     </div>
                     {% endfor %}

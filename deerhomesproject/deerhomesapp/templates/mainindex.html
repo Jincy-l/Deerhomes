@@ -136,6 +136,7 @@
 {% endblock %}
 
 
+
 {% block user %}
     <section class="portfolio-section v3">
         <div class="container">
@@ -155,7 +156,7 @@
                     <div class="portfolio-box-circle">
                         <div class="image">
                             <a href="{% url 'project_detail' project.id %}">
-                                <img src="/media/projectimages/{{ project.image }}" alt="portfolio box">
+                                <img src="{{ MEDIA_URL }}projectimages/{{ project.image }}" alt="portfolio box">
                             </a>
                         </div>
                         <h6 class="title"><a href="{% url 'project_detail' project.id %}">{{ project.name}}</a></h6>
@@ -172,6 +173,291 @@
             </div>
         </div>
     </section>
+   
+  
+
+   <!-- Section Title -->
+<div>
+    <center><h2>Our Categories</h2></center>
+</div><!-- End Section Title -->
+
+<div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="100">
+    <div class="service-item item-cyan position-relative">
+        <div class="icon">
+            <img src="{% static 'userassets/img/new11.jpg' %}" alt="Residential Design" class="img-fluid" style="width: 400px; height: 300px;">
+        </div>
+        <a href="#" class="stretched-link">
+            <h3>Residential Design</h3>
+        </a>
+        <p>Transform your living space into a sanctuary. Our residential design services focus on creating personalized environments that reflect your style and needs.</p>
+    </div>
+</div><!-- End Service Item -->
+
+<div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="200">
+    <div class="service-item item-orange position-relative">
+        <div class="icon">
+            <img src="{% static 'userassets/img/new22.jpeg' %}" alt="Interior Design" class="img-fluid" style="width: 400px; height: 300px;">
+        </div>
+        <a href="#" class="stretched-link">
+            <h3>Interior Design</h3>
+        </a>
+        <p>Elevate your interiors with our expert design solutions. We specialize in creating functional and aesthetically pleasing spaces tailored to your lifestyle.</p>
+    </div>
+</div><!-- End Service Item -->
+
+<div class="col-lg-4 col-md-6 aos-init aos-animate mb-4" data-aos="fade-up" data-aos-delay="300">
+    <div class="service-item item-teal position-relative">
+        <div class="icon">
+            <img src="{% static 'userassets/img/new33.jpg' %}" alt="Commercial Design" class="img-fluid" style="width: 400px; height: 300px;">
+        </div>
+        <a href="#" class="stretched-link">
+            <h3>Commercial Design</h3>
+        </a>
+        <p>Maximize your business potential with our innovative commercial design services. We create spaces that enhance productivity and leave a lasting impression.</p>
+    </div>
+</div><!-- End Service Item -->
+
+<style>
+    /* General Styles */
+
+    /* Services Section */
+    .services {
+      padding: 60px 0;
+    }
+
+    .services .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .services h2 {
+      font-size: 30px; /* Increased font size */
+      font-weight: bold; /* Made bold */
+      color: #333;
+    }
+
+    .services p {
+      font-size: 15px; /* Increased font size */
+      font-weight: bold; /* Made bold */
+      color: #666;
+    }
+
+    /* Service Items */
+    .service-item {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-item .icon {
+      margin-bottom: 20px;
+      text-align: center; /* Center-align the icon */
+    }
+
+    .service-item h3 {
+      font-size: 20px;
+      color: #333;
+      text-align: center; /* Center-align the heading */
+    }
+
+    .service-item p {
+      font-size: 15px;
+      color: #666;
+      text-align: center; /* Center-align the paragraph */
+    }
+
+    /* Different Item Colors */
+    .item-cyan {
+      border-left: 5px solid #00bcd4;
+    }
+
+    .item-orange {
+      border-left: 5px solid #ff9800;
+    }
+
+    .item-teal {
+      border-left: 5px solid #009688;
+    }
+
+    .item-red {
+      border-left: 5px solid #f44336;
+    }
+
+    .item-blue {
+      border-left: 5px solid #2196f3;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .services .section-title h2 {
+        font-size: 2rem; /* Adjust size for mobile */
+      }
+      
+      .services .section-title p {
+        font-size: 1rem; /* Adjust size for mobile */
+      }
+
+      .service-item {
+        margin-bottom: 20px; /* Add spacing for mobile */
+      }
+    }
+</style>
+
+   
+<section class="company-overview">
+    <div class="container-wrapper">
+        <div class="flex-row">
+            <div class="col text-col">
+                <div class="overview-content">
+                    <h4>Unlocking Creative Potential</h4>
+                    <h2><strong>Deer Homes</strong> - <br>Interior Design <br>& Architecture Firm</h2>
+                    <p>
+                        Deer Homes was established in the year 2000 by its Managing Director, Deepak S. B.Tech (Arch), an Architectural engineer from NIT Calicut, with more than 23 years of experience in home building in Kerala and Karnataka. The firm is based in Kollam dist, Kerala, and comprises a team of architectural, civil, and structural engineers.
+                    </p>
+                    <br>
+                    <div class="button-wrapper">
+                        <a href="#" class="cta-btn-warning"><span>Read More</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col image-col">
+                <div class="image-container">
+                    <img src="{% static 'userassets/img/1.jpg' %}" alt="Deer Homes Interior" class="responsive-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* General container styling */
+    .company-overview {
+        padding: 60px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f5f5;
+    }
+
+    .container-wrapper {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Flexbox Row */
+    .flex-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+    }
+
+    /* Column styles */
+    .col {
+        flex: 1;
+    }
+
+    .overview-content {
+        padding: 20px;
+    }
+
+    h4 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: 15px;
+        color: #000;
+    }
+
+    /* Paragraph styling */
+    p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Call-to-action button styling */
+.button-wrapper a {
+    padding: 12px 30px;
+    background-color: yellow; /* Set background to yellow */
+    color: #333; /* Adjust text color for better readability */
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.button-wrapper a:hover {
+    background-color: #FFC104; /* Change hover background to a darker yellow */
+    color: #000; /* Optionally darken the text color on hover */
+}
+
+    
+
+    /* Image styling */
+    .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    /* Media Queries for responsiveness */
+    @media screen and (max-width: 768px) {
+        .flex-row {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        h2 {
+            font-size: 24px;
+        }
+
+        h4 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .button-wrapper a {
+            padding: 10px 20px;
+        }
+    }
+</style>
+
+
+
+    
 
     <section class="features-section bg">
         <div class="container">
@@ -266,6 +552,8 @@
             </div>
         </div>
     </section>
+    
+    
 
     <section class="features-section v2">
         <div class="container-fluid no-padding">
@@ -350,5 +638,7 @@
         </div>
     </section>
 
+
+ 
 
 {% endblock %}

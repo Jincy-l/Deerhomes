@@ -73,7 +73,7 @@
                                 <ul class="clean-list carousel-items">
                                     <li class="carousel-item">
                                         {% comment %} <img src="https://livewp.site/html/bricks/img/portfolio-post-1.jpg" alt="blog post"> {% endcomment %}
-                                        <img src="/media/projectimages/{{ projects.image }}" alt="portfolio box">
+                                        <img src="{{ MEDIA_URL }}projectimages/{{ projects.image }}" alt="portfolio box">
                                     </li>
                                 </ul>
                             </div>
@@ -91,7 +91,7 @@
                                 {% for sub_image in sub_images%}
                                 <div class="gallery-item">
                                     <div class="cover">
-                                        <img src="/media/projectsubimages/{{sub_image.subimage }}" alt="gallery-item">
+                                        <img src="{{ MEDIA_URL }}projectsubimages/{{sub_image.subimage }}" alt="gallery-item">
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -114,7 +114,7 @@
                                     <div class="blog-post-item">
                                         <div class="rel-cover">
                                             <a href="{% url 'project_detail' recent_project.id %}">
-                                                <img class="aligncenter" src="/media/projectimages/{{ recent_project.image }}" alt="blog item">
+                                                <img class="aligncenter" src="{{ MEDIA_URL }}projectimages/{{ recent_project.image }}" alt="blog item">
                                             </a>
                                         </div>
                                         <h5 class="title"><a href="{% url 'project_detail' recent_project.id %}">{{ recent_project.name }}</a></h5>
