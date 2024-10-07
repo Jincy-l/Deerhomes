@@ -181,6 +181,16 @@ body {
       width: 30px; 
   }
 } 
+.btn.btn-viewmore:hover {
+  background: #233e96d4 !important;
+  border-color: #fff;
+  color: #fff !important;
+}
+.btn.btn-viewmore:hover {
+  background: #233e96d4 !important;
+  border-color: #fff;
+  color: #fff !important;
+}
 
 /* ///////////////////////////////////// */
 
